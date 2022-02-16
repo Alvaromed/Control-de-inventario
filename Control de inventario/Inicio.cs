@@ -150,7 +150,7 @@ namespace Control_de_inventario
 
         private void registrarCompra_Click(object sender, EventArgs e)
         {
-            formOpen(menuCompras, new FormCompras());
+            formOpen(menuCompras, new FormCompras(usuarioActual));
         }
 
         private void detalleCompra_Click(object sender, EventArgs e)

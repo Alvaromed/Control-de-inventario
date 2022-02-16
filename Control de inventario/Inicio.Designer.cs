@@ -32,6 +32,11 @@ namespace Control_de_inventario
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.Menu = new System.Windows.Forms.MenuStrip();
+            this.Titulo = new System.Windows.Forms.MenuStrip();
+            this.label1 = new System.Windows.Forms.Label();
+            this.contenido = new System.Windows.Forms.Panel();
+            this.labelUsu = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             this.menuConfiguracion = new FontAwesome.Sharp.IconMenuItem();
             this.categoria = new FontAwesome.Sharp.IconMenuItem();
@@ -47,11 +52,6 @@ namespace Control_de_inventario
             this.menuProveedores = new FontAwesome.Sharp.IconMenuItem();
             this.menuReportes = new FontAwesome.Sharp.IconMenuItem();
             this.menuInfo = new FontAwesome.Sharp.IconMenuItem();
-            this.Titulo = new System.Windows.Forms.MenuStrip();
-            this.label1 = new System.Windows.Forms.Label();
-            this.contenido = new System.Windows.Forms.Panel();
-            this.labelUsu = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Menu.SuspendLayout();
             this.contenido.SuspendLayout();
             this.SuspendLayout();
@@ -73,6 +73,60 @@ namespace Control_de_inventario
             this.Menu.Size = new System.Drawing.Size(899, 24);
             this.Menu.TabIndex = 0;
             this.Menu.Text = "menuStrip1";
+            // 
+            // Titulo
+            // 
+            this.Titulo.AutoSize = false;
+            this.Titulo.BackColor = System.Drawing.Color.Coral;
+            this.Titulo.Location = new System.Drawing.Point(0, 0);
+            this.Titulo.Name = "Titulo";
+            this.Titulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Titulo.Size = new System.Drawing.Size(899, 45);
+            this.Titulo.TabIndex = 1;
+            this.Titulo.Text = "menuStrip2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Coral;
+            this.label1.Font = new System.Drawing.Font("MV Boli", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(314, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(217, 26);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Control de Inventario";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // contenido
+            // 
+            this.contenido.Controls.Add(this.labelUsu);
+            this.contenido.Controls.Add(this.label2);
+            this.contenido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contenido.Location = new System.Drawing.Point(0, 69);
+            this.contenido.Name = "contenido";
+            this.contenido.Size = new System.Drawing.Size(899, 469);
+            this.contenido.TabIndex = 3;
+            // 
+            // labelUsu
+            // 
+            this.labelUsu.AutoSize = true;
+            this.labelUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsu.Location = new System.Drawing.Point(79, 443);
+            this.labelUsu.Name = "labelUsu";
+            this.labelUsu.Size = new System.Drawing.Size(63, 17);
+            this.labelUsu.TabIndex = 1;
+            this.labelUsu.Text = "labelUsu";
+            this.labelUsu.Click += new System.EventHandler(this.labelUsu_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 443);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Usuario:";
             // 
             // menuUsuarios
             // 
@@ -178,7 +232,7 @@ namespace Control_de_inventario
             this.registrarCompra.IconColor = System.Drawing.Color.Black;
             this.registrarCompra.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.registrarCompra.Name = "registrarCompra";
-            this.registrarCompra.Size = new System.Drawing.Size(116, 22);
+            this.registrarCompra.Size = new System.Drawing.Size(180, 22);
             this.registrarCompra.Text = "Agregar";
             this.registrarCompra.Click += new System.EventHandler(this.registrarCompra_Click);
             // 
@@ -188,7 +242,7 @@ namespace Control_de_inventario
             this.detalleCompra.IconColor = System.Drawing.Color.Black;
             this.detalleCompra.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.detalleCompra.Name = "detalleCompra";
-            this.detalleCompra.Size = new System.Drawing.Size(116, 22);
+            this.detalleCompra.Size = new System.Drawing.Size(180, 22);
             this.detalleCompra.Text = "Detalle";
             this.detalleCompra.Click += new System.EventHandler(this.detalleCompra_Click);
             // 
@@ -231,60 +285,6 @@ namespace Control_de_inventario
             this.menuInfo.Size = new System.Drawing.Size(56, 20);
             this.menuInfo.Text = "Info";
             this.menuInfo.Click += new System.EventHandler(this.menuInfo_Click);
-            // 
-            // Titulo
-            // 
-            this.Titulo.AutoSize = false;
-            this.Titulo.BackColor = System.Drawing.Color.Coral;
-            this.Titulo.Location = new System.Drawing.Point(0, 0);
-            this.Titulo.Name = "Titulo";
-            this.Titulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Titulo.Size = new System.Drawing.Size(899, 45);
-            this.Titulo.TabIndex = 1;
-            this.Titulo.Text = "menuStrip2";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Coral;
-            this.label1.Font = new System.Drawing.Font("MV Boli", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(314, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 26);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Control de Inventario";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // contenido
-            // 
-            this.contenido.Controls.Add(this.labelUsu);
-            this.contenido.Controls.Add(this.label2);
-            this.contenido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contenido.Location = new System.Drawing.Point(0, 69);
-            this.contenido.Name = "contenido";
-            this.contenido.Size = new System.Drawing.Size(899, 469);
-            this.contenido.TabIndex = 3;
-            // 
-            // labelUsu
-            // 
-            this.labelUsu.AutoSize = true;
-            this.labelUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUsu.Location = new System.Drawing.Point(79, 443);
-            this.labelUsu.Name = "labelUsu";
-            this.labelUsu.Size = new System.Drawing.Size(63, 17);
-            this.labelUsu.TabIndex = 1;
-            this.labelUsu.Text = "labelUsu";
-            this.labelUsu.Click += new System.EventHandler(this.labelUsu_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 443);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Usuario:";
             // 
             // Inicio
             // 
