@@ -167,5 +167,10 @@ namespace Control_de_inventario
         {
             formOpen((IconMenuItem)sender, new FormReportes());
         }
+
+        private void negocio_Click(object sender, EventArgs e)
+        {
+            formOpen(menuConfiguracion, new FormNegocio());
+        }
     }
 }

@@ -26,12 +26,12 @@ namespace Negocio
 
             if (proveedor.Documento == "")
             {
-                mensaje += "Introduce el nombre de Proveedor\n";
+                mensaje += "Introduce el documento de proveedor\n";
             }
 
             if (proveedor.RazonSocial == "")
             {
-                mensaje += "Introduce el nombre\n ";
+                mensaje += "Introduce la Razón Social del proveedor\n ";
             }
 
             if (proveedor.Telefono == "")
@@ -41,7 +41,7 @@ namespace Negocio
 
             if (proveedor.Correo == "")
             {
-                mensaje += "Introduce la contraseña de Proveedor\n";
+                mensaje += "Introduce el correo del proveedor\n";
             }
 
             if (mensaje != string.Empty)
@@ -66,12 +66,12 @@ namespace Negocio
 
             if (proveedor.Documento == "")
             {
-                mensaje += "Introduce el nombre de Proveedor\n";
+                mensaje += "Introduce el documento de proveedor\n";
             }
 
             if (proveedor.RazonSocial == "")
             {
-                mensaje += "Introduce el nombre\n ";
+                mensaje += "Introduce la Razón Social del proveedor\n ";
             }
 
             if (proveedor.Telefono == "")
@@ -81,7 +81,7 @@ namespace Negocio
 
             if (proveedor.Correo == "")
             {
-                mensaje += "Introduce la contraseña de Proveedor\n";
+                mensaje += "Introduce el correo del proveedor\n";
             }
 
             if (mensaje != string.Empty)

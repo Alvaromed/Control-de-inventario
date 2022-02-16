@@ -29,8 +29,8 @@ namespace Control_de_inventario
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnRestablecerBusqueda = new FontAwesome.Sharp.IconButton();
             this.txtIndiceFila = new System.Windows.Forms.TextBox();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
@@ -39,30 +39,16 @@ namespace Control_de_inventario
             this.label11 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataUsuarios = new System.Windows.Forms.DataGridView();
-            this.btnSeleccionarUsuario = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.IdUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UsuarioLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreCompleto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pass = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataProveedor = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.btnBorrar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.comboEstado = new System.Windows.Forms.ComboBox();
-            this.txtConfirPass = new System.Windows.Forms.TextBox();
-            this.txtPass = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.txtRazonSocial = new System.Windows.Forms.TextBox();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblUsuarioLogin = new System.Windows.Forms.Label();
@@ -71,7 +57,15 @@ namespace Control_de_inventario
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).BeginInit();
+            this.btnSeleccionarProveedor = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.IdProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Correo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataProveedor)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRestablecerBusqueda
@@ -94,6 +88,7 @@ namespace Control_de_inventario
             this.btnRestablecerBusqueda.Text = "Restablecer búsqueda";
             this.btnRestablecerBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRestablecerBusqueda.UseVisualStyleBackColor = false;
+            this.btnRestablecerBusqueda.Click += new System.EventHandler(this.btnRestablecerBusqueda_Click);
             // 
             // txtIndiceFila
             // 
@@ -121,6 +116,7 @@ namespace Control_de_inventario
             this.btnBuscar.Size = new System.Drawing.Size(37, 21);
             this.btnBuscar.TabIndex = 52;
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
@@ -172,121 +168,45 @@ namespace Control_de_inventario
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // dataUsuarios
+            // dataProveedor
             // 
-            this.dataUsuarios.AllowUserToAddRows = false;
-            this.dataUsuarios.AllowUserToDeleteRows = false;
-            this.dataUsuarios.BackgroundColor = System.Drawing.Color.Coral;
-            this.dataUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.btnSeleccionarUsuario,
-            this.IdUsuario,
-            this.UsuarioLogin,
-            this.NombreCompleto,
+            this.dataProveedor.AllowUserToAddRows = false;
+            this.dataProveedor.AllowUserToDeleteRows = false;
+            this.dataProveedor.BackgroundColor = System.Drawing.Color.Coral;
+            this.dataProveedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataProveedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataProveedor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.btnSeleccionarProveedor,
+            this.IdProveedor,
+            this.Documento,
+            this.RazonSocial,
             this.Correo,
-            this.Pass,
-            this.IdRol,
-            this.Rol,
+            this.Telefono,
             this.EstadoValor,
             this.Estado});
-            this.dataUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataUsuarios.Location = new System.Drawing.Point(16, 238);
-            this.dataUsuarios.MultiSelect = false;
-            this.dataUsuarios.Name = "dataUsuarios";
-            this.dataUsuarios.ReadOnly = true;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataUsuarios.RowTemplate.Height = 28;
-            this.dataUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataUsuarios.Size = new System.Drawing.Size(874, 167);
-            this.dataUsuarios.TabIndex = 32;
-            // 
-            // btnSeleccionarUsuario
-            // 
-            this.btnSeleccionarUsuario.FillWeight = 10F;
-            this.btnSeleccionarUsuario.HeaderText = "";
-            this.btnSeleccionarUsuario.Name = "btnSeleccionarUsuario";
-            this.btnSeleccionarUsuario.ReadOnly = true;
-            this.btnSeleccionarUsuario.Width = 35;
-            // 
-            // IdUsuario
-            // 
-            this.IdUsuario.HeaderText = "IdUsuario";
-            this.IdUsuario.Name = "IdUsuario";
-            this.IdUsuario.ReadOnly = true;
-            this.IdUsuario.Visible = false;
-            // 
-            // UsuarioLogin
-            // 
-            this.UsuarioLogin.FillWeight = 120F;
-            this.UsuarioLogin.HeaderText = "Usuario";
-            this.UsuarioLogin.Name = "UsuarioLogin";
-            this.UsuarioLogin.ReadOnly = true;
-            this.UsuarioLogin.Width = 145;
-            // 
-            // NombreCompleto
-            // 
-            this.NombreCompleto.FillWeight = 150F;
-            this.NombreCompleto.HeaderText = "Nombre Completo";
-            this.NombreCompleto.Name = "NombreCompleto";
-            this.NombreCompleto.ReadOnly = true;
-            this.NombreCompleto.Width = 220;
-            // 
-            // Correo
-            // 
-            this.Correo.FillWeight = 130F;
-            this.Correo.HeaderText = "Correo";
-            this.Correo.Name = "Correo";
-            this.Correo.ReadOnly = true;
-            this.Correo.Width = 200;
-            // 
-            // Pass
-            // 
-            this.Pass.HeaderText = "Contraseña";
-            this.Pass.Name = "Pass";
-            this.Pass.ReadOnly = true;
-            this.Pass.Visible = false;
-            // 
-            // IdRol
-            // 
-            this.IdRol.HeaderText = "IdRol";
-            this.IdRol.Name = "IdRol";
-            this.IdRol.ReadOnly = true;
-            this.IdRol.Visible = false;
-            // 
-            // Rol
-            // 
-            this.Rol.FillWeight = 105F;
-            this.Rol.HeaderText = "Rol";
-            this.Rol.Name = "Rol";
-            this.Rol.ReadOnly = true;
-            this.Rol.Width = 120;
-            // 
-            // EstadoValor
-            // 
-            this.EstadoValor.HeaderText = "EstadoValor";
-            this.EstadoValor.Name = "EstadoValor";
-            this.EstadoValor.ReadOnly = true;
-            this.EstadoValor.Visible = false;
-            // 
-            // Estado
-            // 
-            this.Estado.FillWeight = 110F;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 113;
+            this.dataProveedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataProveedor.Location = new System.Drawing.Point(16, 238);
+            this.dataProveedor.MultiSelect = false;
+            this.dataProveedor.Name = "dataProveedor";
+            this.dataProveedor.ReadOnly = true;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataProveedor.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dataProveedor.RowTemplate.Height = 28;
+            this.dataProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataProveedor.Size = new System.Drawing.Size(874, 167);
+            this.dataProveedor.TabIndex = 32;
+            this.dataProveedor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataProveedor_CellContentClick);
+            this.dataProveedor.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataProveedor_CellPainting);
             // 
             // label3
             // 
@@ -311,7 +231,7 @@ namespace Control_de_inventario
             this.btnBorrar.IconColor = System.Drawing.Color.Black;
             this.btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBorrar.IconSize = 18;
-            this.btnBorrar.Location = new System.Drawing.Point(725, 149);
+            this.btnBorrar.Location = new System.Drawing.Point(755, 128);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(101, 29);
             this.btnBorrar.TabIndex = 49;
@@ -319,6 +239,7 @@ namespace Control_de_inventario
             this.btnBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBorrar.UseVisualStyleBackColor = false;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // btnLimpiar
             // 
@@ -332,7 +253,7 @@ namespace Control_de_inventario
             this.btnLimpiar.IconColor = System.Drawing.Color.Black;
             this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiar.IconSize = 18;
-            this.btnLimpiar.Location = new System.Drawing.Point(398, 149);
+            this.btnLimpiar.Location = new System.Drawing.Point(755, 84);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(101, 29);
             this.btnLimpiar.TabIndex = 48;
@@ -340,6 +261,7 @@ namespace Control_de_inventario
             this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnGuardar
             // 
@@ -353,7 +275,7 @@ namespace Control_de_inventario
             this.btnGuardar.IconColor = System.Drawing.Color.Black;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 18;
-            this.btnGuardar.Location = new System.Drawing.Point(139, 149);
+            this.btnGuardar.Location = new System.Drawing.Point(755, 41);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(101, 29);
             this.btnGuardar.TabIndex = 46;
@@ -361,88 +283,53 @@ namespace Control_de_inventario
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // comboEstado
             // 
             this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(482, 107);
+            this.comboEstado.Location = new System.Drawing.Point(249, 107);
             this.comboEstado.Name = "comboEstado";
             this.comboEstado.Size = new System.Drawing.Size(121, 21);
             this.comboEstado.TabIndex = 39;
             // 
-            // txtConfirPass
-            // 
-            this.txtConfirPass.Location = new System.Drawing.Point(249, 107);
-            this.txtConfirPass.Name = "txtConfirPass";
-            this.txtConfirPass.PasswordChar = '*';
-            this.txtConfirPass.Size = new System.Drawing.Size(187, 20);
-            this.txtConfirPass.TabIndex = 43;
-            // 
-            // txtPass
-            // 
-            this.txtPass.Location = new System.Drawing.Point(17, 107);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(187, 20);
-            this.txtPass.TabIndex = 41;
-            // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(701, 59);
+            this.txtCorreo.Location = new System.Drawing.Point(17, 108);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(187, 20);
             this.txtCorreo.TabIndex = 37;
             // 
-            // txtNombre
+            // txtRazonSocial
             // 
-            this.txtNombre.Location = new System.Drawing.Point(249, 58);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(187, 20);
-            this.txtNombre.TabIndex = 36;
+            this.txtRazonSocial.Location = new System.Drawing.Point(249, 58);
+            this.txtRazonSocial.Name = "txtRazonSocial";
+            this.txtRazonSocial.Size = new System.Drawing.Size(187, 20);
+            this.txtRazonSocial.TabIndex = 36;
             // 
-            // txtUsuario
+            // txtDocumento
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(17, 59);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(187, 20);
-            this.txtUsuario.TabIndex = 33;
+            this.txtDocumento.Location = new System.Drawing.Point(17, 59);
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(187, 20);
+            this.txtDocumento.TabIndex = 33;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(479, 91);
+            this.label10.Location = new System.Drawing.Point(246, 91);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 13);
             this.label10.TabIndex = 47;
             this.label10.Text = "Estado";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(246, 91);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(108, 13);
-            this.label8.TabIndex = 44;
-            this.label8.Text = "Confirmar Contraseña";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(14, 91);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "Contraseña";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(698, 42);
+            this.label5.Location = new System.Drawing.Point(14, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 40;
@@ -456,7 +343,7 @@ namespace Control_de_inventario
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(70, 13);
             this.lblNombre.TabIndex = 38;
-            this.lblNombre.Text = "Razon Social";
+            this.lblNombre.Text = "Razón Social";
             // 
             // lblUsuarioLogin
             // 
@@ -509,9 +396,69 @@ namespace Control_de_inventario
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(481, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 62;
-            this.label1.Text = "Teleéfono";
+            this.label1.Text = "Teléfono";
+            // 
+            // btnSeleccionarProveedor
+            // 
+            this.btnSeleccionarProveedor.FillWeight = 10F;
+            this.btnSeleccionarProveedor.HeaderText = "";
+            this.btnSeleccionarProveedor.Name = "btnSeleccionarProveedor";
+            this.btnSeleccionarProveedor.ReadOnly = true;
+            this.btnSeleccionarProveedor.Width = 35;
+            // 
+            // IdProveedor
+            // 
+            this.IdProveedor.HeaderText = "IdProveedor";
+            this.IdProveedor.Name = "IdProveedor";
+            this.IdProveedor.ReadOnly = true;
+            this.IdProveedor.Visible = false;
+            // 
+            // Documento
+            // 
+            this.Documento.FillWeight = 120F;
+            this.Documento.HeaderText = "Documento";
+            this.Documento.Name = "Documento";
+            this.Documento.ReadOnly = true;
+            this.Documento.Width = 145;
+            // 
+            // RazonSocial
+            // 
+            this.RazonSocial.FillWeight = 150F;
+            this.RazonSocial.HeaderText = "Razón Social";
+            this.RazonSocial.Name = "RazonSocial";
+            this.RazonSocial.ReadOnly = true;
+            this.RazonSocial.Width = 220;
+            // 
+            // Correo
+            // 
+            this.Correo.FillWeight = 130F;
+            this.Correo.HeaderText = "Correo";
+            this.Correo.Name = "Correo";
+            this.Correo.ReadOnly = true;
+            this.Correo.Width = 200;
+            // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            // 
+            // EstadoValor
+            // 
+            this.EstadoValor.HeaderText = "EstadoValor";
+            this.EstadoValor.Name = "EstadoValor";
+            this.EstadoValor.ReadOnly = true;
+            this.EstadoValor.Visible = false;
+            // 
+            // Estado
+            // 
+            this.Estado.FillWeight = 110F;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 113;
             // 
             // FormProveedores
             // 
@@ -529,20 +476,16 @@ namespace Control_de_inventario
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataUsuarios);
+            this.Controls.Add(this.dataProveedor);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.comboEstado);
-            this.Controls.Add(this.txtConfirPass);
-            this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtCorreo);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.txtRazonSocial);
+            this.Controls.Add(this.txtDocumento);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblUsuarioLogin);
@@ -550,7 +493,8 @@ namespace Control_de_inventario
             this.Controls.Add(this.label9);
             this.Name = "FormProveedores";
             this.Text = "FormProveedores";
-            ((System.ComponentModel.ISupportInitialize)(this.dataUsuarios)).EndInit();
+            this.Load += new System.EventHandler(this.FormProveedores_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataProveedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -566,30 +510,16 @@ namespace Control_de_inventario
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataUsuarios;
-        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionarUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioLogin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreCompleto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pass;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdRol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoValor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridView dataProveedor;
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconButton btnBorrar;
         private FontAwesome.Sharp.IconButton btnLimpiar;
         private FontAwesome.Sharp.IconButton btnGuardar;
         private System.Windows.Forms.ComboBox comboEstado;
-        private System.Windows.Forms.TextBox txtConfirPass;
-        private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.TextBox txtCorreo;
-        private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.TextBox txtRazonSocial;
+        private System.Windows.Forms.TextBox txtDocumento;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblUsuarioLogin;
@@ -598,5 +528,13 @@ namespace Control_de_inventario
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionarProveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdProveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RazonSocial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Correo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoValor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
     }
 }

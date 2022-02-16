@@ -29,6 +29,7 @@ namespace Control_de_inventario
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.lblTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -36,11 +37,11 @@ namespace Control_de_inventario
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboUsuario = new System.Windows.Forms.ComboBox();
+            this.btnEntrar = new Control_de_inventario.DesignButtons.RJButton();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new FontAwesome.Sharp.IconButton();
             this.btnAcceder = new FontAwesome.Sharp.IconButton();
-            this.btnEntrar = new Control_de_inventario.DesignButtons.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
@@ -112,6 +113,30 @@ namespace Control_de_inventario
             this.comboUsuario.Size = new System.Drawing.Size(165, 23);
             this.comboUsuario.TabIndex = 1;
             // 
+            // btnEntrar
+            // 
+            this.btnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnEntrar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnEntrar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEntrar.BorderRadius = 13;
+            this.btnEntrar.BorderSize = 0;
+            this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEntrar.FlatAppearance.BorderSize = 0;
+            this.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntrar.ForeColor = System.Drawing.Color.Black;
+            this.btnEntrar.Image = global::Control_de_inventario.Properties.Resources.unlockBueno;
+            this.btnEntrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEntrar.Location = new System.Drawing.Point(100, 215);
+            this.btnEntrar.Name = "btnEntrar";
+            this.btnEntrar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnEntrar.Size = new System.Drawing.Size(150, 33);
+            this.btnEntrar.TabIndex = 3;
+            this.btnEntrar.Text = "Acceder";
+            this.btnEntrar.TextColor = System.Drawing.Color.Black;
+            this.btnEntrar.UseVisualStyleBackColor = false;
+            this.btnEntrar.Click += new System.EventHandler(this.rjButton1_Click);
+            // 
             // btnMinimizar
             // 
             this.btnMinimizar.BackColor = System.Drawing.Color.Coral;
@@ -180,30 +205,6 @@ namespace Control_de_inventario
             this.btnAcceder.Click += new System.EventHandler(this.iconButton1_Click);
             this.btnAcceder.Paint += new System.Windows.Forms.PaintEventHandler(this.FormaRedonda);
             // 
-            // btnEntrar
-            // 
-            this.btnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnEntrar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnEntrar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEntrar.BorderRadius = 13;
-            this.btnEntrar.BorderSize = 0;
-            this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEntrar.FlatAppearance.BorderSize = 0;
-            this.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEntrar.ForeColor = System.Drawing.Color.Black;
-            this.btnEntrar.Image = global::Control_de_inventario.Properties.Resources._checked;
-            this.btnEntrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEntrar.Location = new System.Drawing.Point(100, 215);
-            this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.btnEntrar.Size = new System.Drawing.Size(150, 33);
-            this.btnEntrar.TabIndex = 3;
-            this.btnEntrar.Text = "Acceder";
-            this.btnEntrar.TextColor = System.Drawing.Color.Black;
-            this.btnEntrar.UseVisualStyleBackColor = false;
-            this.btnEntrar.Click += new System.EventHandler(this.rjButton1_Click);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,10 +224,11 @@ namespace Control_de_inventario
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "11";
+            this.Text = "Control de Inventario";
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();

@@ -17,6 +17,7 @@ namespace Control_de_inventario
             if (disposing && (components != null))
             {
                 components.Dispose();
+
             }
             base.Dispose(disposing);
         }
@@ -29,11 +30,13 @@ namespace Control_de_inventario
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             this.menuConfiguracion = new FontAwesome.Sharp.IconMenuItem();
             this.categoria = new FontAwesome.Sharp.IconMenuItem();
             this.producto = new FontAwesome.Sharp.IconMenuItem();
+            this.negocio = new FontAwesome.Sharp.IconMenuItem();
             this.menuVentas = new FontAwesome.Sharp.IconMenuItem();
             this.registrarVenta = new FontAwesome.Sharp.IconMenuItem();
             this.detalleVenta = new FontAwesome.Sharp.IconMenuItem();
@@ -85,7 +88,8 @@ namespace Control_de_inventario
             // 
             this.menuConfiguracion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.categoria,
-            this.producto});
+            this.producto,
+            this.negocio});
             this.menuConfiguracion.IconChar = FontAwesome.Sharp.IconChar.Toolbox;
             this.menuConfiguracion.IconColor = System.Drawing.Color.Black;
             this.menuConfiguracion.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -113,6 +117,16 @@ namespace Control_de_inventario
             this.producto.Size = new System.Drawing.Size(130, 22);
             this.producto.Text = "Produto";
             this.producto.Click += new System.EventHandler(this.producto_Click);
+            // 
+            // negocio
+            // 
+            this.negocio.IconChar = FontAwesome.Sharp.IconChar.Building;
+            this.negocio.IconColor = System.Drawing.Color.Black;
+            this.negocio.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.negocio.Name = "negocio";
+            this.negocio.Size = new System.Drawing.Size(130, 22);
+            this.negocio.Text = "Negocio";
+            this.negocio.Click += new System.EventHandler(this.negocio_Click);
             // 
             // menuVentas
             // 
@@ -281,6 +295,7 @@ namespace Control_de_inventario
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.Titulo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.Menu;
             this.Name = "Inicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -318,6 +333,7 @@ namespace Control_de_inventario
         private FontAwesome.Sharp.IconMenuItem detalleVenta;
         private FontAwesome.Sharp.IconMenuItem registrarCompra;
         private FontAwesome.Sharp.IconMenuItem detalleCompra;
+        private FontAwesome.Sharp.IconMenuItem negocio;
     }
 }
 
