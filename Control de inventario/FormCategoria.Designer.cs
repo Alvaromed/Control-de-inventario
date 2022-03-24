@@ -29,8 +29,8 @@ namespace Control_de_inventario
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnRestablecerBusqueda = new FontAwesome.Sharp.IconButton();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -48,6 +48,7 @@ namespace Control_de_inventario
             this.NombreCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarCategoria = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.comboEstado = new System.Windows.Forms.ComboBox();
             this.txtCategoria = new System.Windows.Forms.TextBox();
@@ -56,11 +57,17 @@ namespace Control_de_inventario
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.progressBarListaProductos = new System.Windows.Forms.ProgressBar();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataCategorias)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRestablecerBusqueda
             // 
+            this.btnRestablecerBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestablecerBusqueda.BackColor = System.Drawing.Color.Silver;
             this.btnRestablecerBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRestablecerBusqueda.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -72,7 +79,7 @@ namespace Control_de_inventario
             this.btnRestablecerBusqueda.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRestablecerBusqueda.IconSize = 13;
             this.btnRestablecerBusqueda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRestablecerBusqueda.Location = new System.Drawing.Point(752, 411);
+            this.btnRestablecerBusqueda.Location = new System.Drawing.Point(748, 18);
             this.btnRestablecerBusqueda.Name = "btnRestablecerBusqueda";
             this.btnRestablecerBusqueda.Size = new System.Drawing.Size(135, 23);
             this.btnRestablecerBusqueda.TabIndex = 62;
@@ -83,6 +90,7 @@ namespace Control_de_inventario
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -93,7 +101,7 @@ namespace Control_de_inventario
             this.btnBuscar.IconColor = System.Drawing.Color.Black;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 15;
-            this.btnBuscar.Location = new System.Drawing.Point(847, 130);
+            this.btnBuscar.Location = new System.Drawing.Point(849, 15);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(37, 21);
             this.btnBuscar.TabIndex = 60;
@@ -102,26 +110,30 @@ namespace Control_de_inventario
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(720, 130);
+            this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBuscar.Location = new System.Drawing.Point(722, 15);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(121, 20);
             this.txtBuscar.TabIndex = 59;
             // 
             // comboBuscar
             // 
+            this.comboBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBuscar.BackColor = System.Drawing.SystemColors.Window;
             this.comboBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBuscar.FormattingEnabled = true;
-            this.comboBuscar.Location = new System.Drawing.Point(612, 129);
+            this.comboBuscar.Location = new System.Drawing.Point(614, 14);
             this.comboBuscar.Name = "comboBuscar";
             this.comboBuscar.Size = new System.Drawing.Size(102, 21);
             this.comboBuscar.TabIndex = 58;
             // 
             // label11
             // 
-            this.label11.BackColor = System.Drawing.Color.Goldenrod;
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(548, 129);
+            this.label11.Location = new System.Drawing.Point(550, 14);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 21);
             this.label11.TabIndex = 57;
@@ -135,22 +147,24 @@ namespace Control_de_inventario
             this.txtId.Size = new System.Drawing.Size(20, 20);
             this.txtId.TabIndex = 55;
             this.txtId.Text = "0";
-            this.txtId.Visible = false;
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.Color.Goldenrod;
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Georgia", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(56, 123);
+            this.label4.Location = new System.Drawing.Point(3, 5);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(345, 33);
+            this.label4.Size = new System.Drawing.Size(400, 33);
             this.label4.TabIndex = 54;
             this.label4.Text = "Lista de Categorías";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBorrar
             // 
+            this.btnBorrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBorrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBorrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -161,7 +175,7 @@ namespace Control_de_inventario
             this.btnBorrar.IconColor = System.Drawing.Color.Black;
             this.btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBorrar.IconSize = 18;
-            this.btnBorrar.Location = new System.Drawing.Point(792, 58);
+            this.btnBorrar.Location = new System.Drawing.Point(24, 10);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(101, 29);
             this.btnBorrar.TabIndex = 51;
@@ -169,10 +183,12 @@ namespace Control_de_inventario
             this.btnBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBorrar.UseVisualStyleBackColor = false;
+            this.btnBorrar.Visible = false;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click_1);
             // 
             // btnGuardar
             // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -183,7 +199,7 @@ namespace Control_de_inventario
             this.btnGuardar.IconColor = System.Drawing.Color.Black;
             this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardar.IconSize = 18;
-            this.btnGuardar.Location = new System.Drawing.Point(653, 59);
+            this.btnGuardar.Location = new System.Drawing.Point(740, 56);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(101, 29);
             this.btnGuardar.TabIndex = 49;
@@ -195,10 +211,13 @@ namespace Control_de_inventario
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.BackColor = System.Drawing.Color.Coral;
             this.label9.Location = new System.Drawing.Point(-26, 161);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(928, 285);
+            this.label9.Size = new System.Drawing.Size(931, 247);
             this.label9.TabIndex = 56;
             // 
             // txtIndiceFila
@@ -213,31 +232,42 @@ namespace Control_de_inventario
             // dataCategorias
             // 
             this.dataCategorias.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataCategorias.AllowUserToDeleteRows = false;
+            this.dataCategorias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataCategorias.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataCategorias.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
+            this.dataCategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataCategorias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.dataCategorias.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataCategorias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataCategorias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionarCategoria,
             this.IdCategoria,
             this.NombreCategoria,
             this.EstadoValor,
-            this.Estado});
-            this.dataCategorias.Location = new System.Drawing.Point(13, 191);
+            this.Estado,
+            this.btnEliminarCategoria});
+            this.dataCategorias.Location = new System.Drawing.Point(24, 177);
             this.dataCategorias.MultiSelect = false;
             this.dataCategorias.Name = "dataCategorias";
             this.dataCategorias.ReadOnly = true;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataCategorias.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataCategorias.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataCategorias.RowTemplate.Height = 28;
-            this.dataCategorias.Size = new System.Drawing.Size(871, 214);
+            this.dataCategorias.Size = new System.Drawing.Size(860, 214);
             this.dataCategorias.TabIndex = 53;
             this.dataCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataCategorias_CellContentClick);
             this.dataCategorias.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataCategorias_CellPainting);
@@ -247,7 +277,6 @@ namespace Control_de_inventario
             this.btnSeleccionarCategoria.HeaderText = "";
             this.btnSeleccionarCategoria.Name = "btnSeleccionarCategoria";
             this.btnSeleccionarCategoria.ReadOnly = true;
-            this.btnSeleccionarCategoria.Width = 25;
             // 
             // IdCategoria
             // 
@@ -261,7 +290,6 @@ namespace Control_de_inventario
             this.NombreCategoria.HeaderText = "Categoría";
             this.NombreCategoria.Name = "NombreCategoria";
             this.NombreCategoria.ReadOnly = true;
-            this.NombreCategoria.Width = 125;
             // 
             // EstadoValor
             // 
@@ -276,8 +304,15 @@ namespace Control_de_inventario
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
             // 
+            // btnEliminarCategoria
+            // 
+            this.btnEliminarCategoria.HeaderText = "";
+            this.btnEliminarCategoria.Name = "btnEliminarCategoria";
+            this.btnEliminarCategoria.ReadOnly = true;
+            // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Cooper Black", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -289,25 +324,29 @@ namespace Control_de_inventario
             // 
             // comboEstado
             // 
+            this.comboEstado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEstado.FormattingEnabled = true;
-            this.comboEstado.Location = new System.Drawing.Point(482, 63);
+            this.comboEstado.Location = new System.Drawing.Point(482, 67);
             this.comboEstado.Name = "comboEstado";
             this.comboEstado.Size = new System.Drawing.Size(114, 21);
             this.comboEstado.TabIndex = 48;
             // 
             // txtCategoria
             // 
+            this.txtCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCategoria.Location = new System.Drawing.Point(188, 68);
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(172, 20);
             this.txtCategoria.TabIndex = 42;
+            this.txtCategoria.TextChanged += new System.EventHandler(this.txtCategoria_TextChanged);
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(434, 66);
+            this.label10.Location = new System.Drawing.Point(434, 70);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 13);
             this.label10.TabIndex = 41;
@@ -315,6 +354,7 @@ namespace Control_de_inventario
             // 
             // lblUsuarioLogin
             // 
+            this.lblUsuarioLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsuarioLogin.AutoSize = true;
             this.lblUsuarioLogin.BackColor = System.Drawing.Color.White;
             this.lblUsuarioLogin.Location = new System.Drawing.Point(123, 72);
@@ -331,7 +371,7 @@ namespace Control_de_inventario
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(905, 117);
+            this.label2.Size = new System.Drawing.Size(905, 125);
             this.label2.TabIndex = 34;
             // 
             // label1
@@ -344,42 +384,80 @@ namespace Control_de_inventario
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.BackColor = System.Drawing.Color.Goldenrod;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(0, 117);
+            this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(902, 44);
+            this.label5.Size = new System.Drawing.Size(905, 44);
             this.label5.TabIndex = 63;
+            // 
+            // progressBarListaProductos
+            // 
+            this.progressBarListaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarListaProductos.Location = new System.Drawing.Point(645, 27);
+            this.progressBarListaProductos.Name = "progressBarListaProductos";
+            this.progressBarListaProductos.Size = new System.Drawing.Size(97, 14);
+            this.progressBarListaProductos.TabIndex = 66;
+            this.progressBarListaProductos.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Coral;
+            this.panel1.Controls.Add(this.progressBarListaProductos);
+            this.panel1.Controls.Add(this.btnRestablecerBusqueda);
+            this.panel1.Controls.Add(this.btnBorrar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 401);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(905, 49);
+            this.panel1.TabIndex = 67;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.Goldenrod;
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.btnBuscar);
+            this.panel2.Controls.Add(this.txtBuscar);
+            this.panel2.Controls.Add(this.comboBuscar);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Location = new System.Drawing.Point(0, 120);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(905, 44);
+            this.panel2.TabIndex = 68;
             // 
             // FormCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(905, 450);
-            this.Controls.Add(this.btnRestablecerBusqueda);
-            this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.txtBuscar);
-            this.Controls.Add(this.comboBuscar);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblUsuarioLogin);
+            this.Controls.Add(this.txtCategoria);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.txtId);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtIndiceFila);
             this.Controls.Add(this.dataCategorias);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboEstado);
-            this.Controls.Add(this.txtCategoria);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lblUsuarioLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.panel1);
             this.Name = "FormCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormCategoria";
             this.Load += new System.EventHandler(this.FormCategoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataCategorias)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,10 +484,14 @@ namespace Control_de_inventario
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ProgressBar progressBarListaProductos;
         private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionarCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEliminarCategoria;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

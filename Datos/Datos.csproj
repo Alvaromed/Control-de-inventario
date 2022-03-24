@@ -44,12 +44,14 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="D_Categoria.cs" />
+    <Compile Include="D_Compras.cs" />
     <Compile Include="D_Negocio.cs" />
     <Compile Include="D_Permiso.cs" />
     <Compile Include="D_Productos.cs" />
     <Compile Include="D_Proveedor.cs" />
     <Compile Include="D_Rol.cs" />
     <Compile Include="D_Usuario.cs" />
+    <Compile Include="D_Venta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

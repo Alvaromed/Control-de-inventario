@@ -19,8 +19,21 @@ namespace Control_de_inventario
         public FormProducto()
         {
             InitializeComponent();
+            
+            
             this.toolMensaje.SetToolTip(this.btnExcel, "Descargar lista en Excel");
             this.toolMensaje.SetToolTip(this.btnBuscar, "Buscar");
+            this.toolMensaje.SetToolTip(this.txtCodigo, "Introduce el código del producto");
+            this.toolMensaje.SetToolTip(this.txtNombreProducto, "Introduce el nombre del producto");
+            this.toolMensaje.SetToolTip(this.txtDescripcion, "Introduce la descripción del producto");
+
+            this.toolMensaje.SetToolTip(this.txtCodigo, "Introduce el código del producto");
+
+
+            this.toolMensaje.SetToolTip(this.txtBuscar, "Introduce lo que deseas buscar");
+
+
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -123,7 +136,7 @@ namespace Control_de_inventario
 
             };
 
-            //Condición para crear un usuario nuevo sin que seleccione alguno de los demás
+            //Condición para crear un producto nuevo sin que seleccione alguno de los demás
             if (producto.IdProducto == 0)
             {
                 //Ejecución del método Registrar que se encuentra en la clase N_usuario, dandole a idUsuarioGenerado el valor necesario para ser comparado 
@@ -149,6 +162,7 @@ namespace Control_de_inventario
                     MessageBox.Show("Producto: " + txtNombreProducto.Text + " registrado exitosamente", "Registro Producto", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                     BorrarCampos();
+                    txtCodigo.Focus();
                 }
                 else
                 {
@@ -176,6 +190,7 @@ namespace Control_de_inventario
 
                     MessageBox.Show("Producto: " + txtNombreProducto.Text + " a sido modificado correctamente", "Edición de Proucto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     BorrarCampos();
+                    txtCodigo.Focus();
 
                 }
                 else
@@ -309,23 +324,44 @@ namespace Control_de_inventario
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            //Nos ayudará a filtrar la columna de búsqueda
-            string columna = ((OPcionCombo)comboBuscar.SelectedItem).Valor.ToString();
+            progressBarListaProductos.Visible = true;
 
-            if (dataProductos.Rows.Count > 0)
+            int valorMinimo, valorMaximo;
+            valorMinimo = progressBarListaProductos.Minimum = 1;
+            valorMaximo = progressBarListaProductos.Maximum = 2500;
+
+            for (int i = valorMinimo; i <= valorMaximo; i++)
             {
-                foreach (DataGridViewRow fila in dataProductos.Rows)
+                progressBarListaProductos.Value = i;
+                progressBarListaProductos.PerformStep();
+                this.btnBuscar.Cursor = Cursors.WaitCursor;
+
+            }
+
+            if (progressBarListaProductos.Value == 2500)
+            {
+                //Nos ayudará a filtrar la columna de búsqueda
+                string columna = ((OPcionCombo)comboBuscar.SelectedItem).Valor.ToString();
+
+                if (dataProductos.Rows.Count > 0)
                 {
-                    if (fila.Cells[columna].Value.ToString().Trim().ToUpper().Contains(txtBuscar.Text.Trim().ToUpper()))
+                    progressBarListaProductos.Value = 1;
+                    foreach (DataGridViewRow fila in dataProductos.Rows)
                     {
-                        fila.Visible = true;
-                    }
-                    else
-                    {
-                        fila.Visible = false;
+                        if (fila.Cells[columna].Value.ToString().Trim().ToUpper().Contains(txtBuscar.Text.Trim().ToUpper()))
+                        {
+                            fila.Visible = true;
+                            progressBarListaProductos.Visible = false;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
                     }
                 }
+                this.btnBuscar.Cursor = Cursors.Hand;
             }
+            
         }
 
         private void btnRestablecerBusqueda_Click(object sender, EventArgs e)
@@ -385,7 +421,8 @@ namespace Control_de_inventario
                   
                 }
                 SaveFileDialog saveFile = new SaveFileDialog();
-                saveFile.FileName = string.Format("REPORTE PRODUCTOS_{0}.xlsx",DateTime.Now.ToString("dd-MM-yyyy_HH:mm:ss"));
+                string formatoHora = DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss");
+                saveFile.FileName = string.Format("REPORTE PRODUCTOS_"+formatoHora+".xlsx");
                 saveFile.Filter = "Excel Files | *.xlsx";
 
                 //Condición para cuando el diálogo de creación del archivo es OK 
@@ -411,6 +448,16 @@ namespace Control_de_inventario
                 }
                
             }
+        }
+
+        private void dataProductos_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataProductos_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+         
         }
     }
 }

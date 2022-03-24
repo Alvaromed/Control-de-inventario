@@ -29,6 +29,7 @@ namespace Control_de_inventario
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.lblTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,11 +38,12 @@ namespace Control_de_inventario
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboUsuario = new System.Windows.Forms.ComboBox();
-            this.btnEntrar = new Control_de_inventario.DesignButtons.RJButton();
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
-            this.btnCancelar = new FontAwesome.Sharp.IconButton();
-            this.btnAcceder = new FontAwesome.Sharp.IconButton();
+            this.toolMessage = new System.Windows.Forms.ToolTip(this.components);
+            this.progressBarListaProductos = new System.Windows.Forms.ProgressBar();
+            this.ProgressBar = new Control_de_inventario.DesignProgressBar.RJProgressBar();
+            this.btnEntrar = new Control_de_inventario.DesignButtons.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
@@ -54,6 +56,7 @@ namespace Control_de_inventario
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(348, 43);
             this.lblTitle.TabIndex = 0;
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // label2
             // 
@@ -84,6 +87,7 @@ namespace Control_de_inventario
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(165, 20);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // label4
             // 
@@ -106,36 +110,15 @@ namespace Control_de_inventario
             // 
             // comboUsuario
             // 
+            this.comboUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboUsuario.FormattingEnabled = true;
             this.comboUsuario.Location = new System.Drawing.Point(138, 106);
             this.comboUsuario.Name = "comboUsuario";
             this.comboUsuario.Size = new System.Drawing.Size(165, 23);
             this.comboUsuario.TabIndex = 1;
-            // 
-            // btnEntrar
-            // 
-            this.btnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnEntrar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnEntrar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEntrar.BorderRadius = 13;
-            this.btnEntrar.BorderSize = 0;
-            this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEntrar.FlatAppearance.BorderSize = 0;
-            this.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEntrar.ForeColor = System.Drawing.Color.Black;
-            this.btnEntrar.Image = global::Control_de_inventario.Properties.Resources.unlockBueno;
-            this.btnEntrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEntrar.Location = new System.Drawing.Point(100, 215);
-            this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.btnEntrar.Size = new System.Drawing.Size(150, 33);
-            this.btnEntrar.TabIndex = 3;
-            this.btnEntrar.Text = "Acceder";
-            this.btnEntrar.TextColor = System.Drawing.Color.Black;
-            this.btnEntrar.UseVisualStyleBackColor = false;
-            this.btnEntrar.Click += new System.EventHandler(this.rjButton1_Click);
+            this.comboUsuario.SelectedIndexChanged += new System.EventHandler(this.comboUsuario_SelectedIndexChanged);
+            this.comboUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboUsuario_KeyPress);
             // 
             // btnMinimizar
             // 
@@ -163,47 +146,69 @@ namespace Control_de_inventario
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // btnCancelar
+            // toolMessage
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(207)))), ((int)(((byte)(202)))));
-            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
-            this.btnCancelar.IconColor = System.Drawing.Color.Black;
-            this.btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCancelar.IconSize = 20;
-            this.btnCancelar.Location = new System.Drawing.Point(2, 276);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(87, 24);
-            this.btnCancelar.TabIndex = 8;
-            this.btnCancelar.Text = "Salir";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Visible = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.toolMessage.AutoPopDelay = 2000;
+            this.toolMessage.InitialDelay = 100;
+            this.toolMessage.ReshowDelay = 100;
             // 
-            // btnAcceder
+            // progressBarListaProductos
             // 
-            this.btnAcceder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(255)))), ((int)(((byte)(210)))));
-            this.btnAcceder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAcceder.FlatAppearance.BorderSize = 0;
-            this.btnAcceder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAcceder.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.btnAcceder.IconColor = System.Drawing.Color.Black;
-            this.btnAcceder.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAcceder.IconSize = 20;
-            this.btnAcceder.Location = new System.Drawing.Point(98, 277);
-            this.btnAcceder.Name = "btnAcceder";
-            this.btnAcceder.Size = new System.Drawing.Size(101, 23);
-            this.btnAcceder.TabIndex = 7;
-            this.btnAcceder.Text = "Acceder";
-            this.btnAcceder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAcceder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAcceder.UseVisualStyleBackColor = false;
-            this.btnAcceder.Visible = false;
-            this.btnAcceder.Click += new System.EventHandler(this.iconButton1_Click);
-            this.btnAcceder.Paint += new System.Windows.Forms.PaintEventHandler(this.FormaRedonda);
+            this.progressBarListaProductos.ForeColor = System.Drawing.Color.Red;
+            this.progressBarListaProductos.Location = new System.Drawing.Point(10, 277);
+            this.progressBarListaProductos.Name = "progressBarListaProductos";
+            this.progressBarListaProductos.Size = new System.Drawing.Size(97, 14);
+            this.progressBarListaProductos.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBarListaProductos.TabIndex = 66;
+            this.progressBarListaProductos.UseWaitCursor = true;
+            this.progressBarListaProductos.Visible = false;
+            // 
+            // ProgressBar
+            // 
+            this.ProgressBar.BackColor = System.Drawing.Color.Gainsboro;
+            this.ProgressBar.ChannelColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(29)))), ((int)(((byte)(41)))));
+            this.ProgressBar.ChannelHeight = 5;
+            this.ProgressBar.ForeBackColor = System.Drawing.Color.Chartreuse;
+            this.ProgressBar.ForeColor = System.Drawing.Color.Black;
+            this.ProgressBar.Location = new System.Drawing.Point(100, 230);
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.ShowMaximun = false;
+            this.ProgressBar.ShowValue = Control_de_inventario.DesignProgressBar.TextPosition.None;
+            this.ProgressBar.Size = new System.Drawing.Size(150, 18);
+            this.ProgressBar.SliderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(139)))), ((int)(((byte)(207)))));
+            this.ProgressBar.SliderHeight = 12;
+            this.ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.ProgressBar.SymbolAfter = "";
+            this.ProgressBar.SymbolBefore = "";
+            this.ProgressBar.TabIndex = 67;
+            this.ProgressBar.UseWaitCursor = true;
+            this.ProgressBar.Value = 50;
+            this.ProgressBar.Visible = false;
+            // 
+            // btnEntrar
+            // 
+            this.btnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnEntrar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnEntrar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEntrar.BorderRadius = 13;
+            this.btnEntrar.BorderSize = 0;
+            this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEntrar.FlatAppearance.BorderSize = 0;
+            this.btnEntrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEntrar.ForeColor = System.Drawing.Color.Black;
+            this.btnEntrar.Image = global::Control_de_inventario.Properties.Resources.unlockBueno;
+            this.btnEntrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEntrar.Location = new System.Drawing.Point(100, 215);
+            this.btnEntrar.Name = "btnEntrar";
+            this.btnEntrar.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnEntrar.Size = new System.Drawing.Size(150, 33);
+            this.btnEntrar.TabIndex = 3;
+            this.btnEntrar.Text = "Acceder";
+            this.btnEntrar.TextColor = System.Drawing.Color.Black;
+            this.btnEntrar.UseVisualStyleBackColor = false;
+            this.btnEntrar.Click += new System.EventHandler(this.rjButton1_Click);
+            this.btnEntrar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnEntrar_KeyPress);
             // 
             // Login
             // 
@@ -211,18 +216,18 @@ namespace Control_de_inventario
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(348, 300);
-            this.Controls.Add(this.btnEntrar);
+            this.Controls.Add(this.progressBarListaProductos);
             this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.comboUsuario);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAcceder);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.ProgressBar);
+            this.Controls.Add(this.btnEntrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
@@ -245,11 +250,12 @@ namespace Control_de_inventario
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private FontAwesome.Sharp.IconButton btnAcceder;
-        private FontAwesome.Sharp.IconButton btnCancelar;
         private System.Windows.Forms.ComboBox comboUsuario;
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.PictureBox btnMinimizar;
         private DesignButtons.RJButton btnEntrar;
+        private System.Windows.Forms.ToolTip toolMessage;
+        private System.Windows.Forms.ProgressBar progressBarListaProductos;
+        private DesignProgressBar.RJProgressBar ProgressBar;
     }
 }

@@ -40,7 +40,7 @@ namespace Datos
                         {
                             lista.Add( new Usuario()
                             {
-                                            IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
+                                IdUsuario = Convert.ToInt32(dr["IdUsuario"]),
                                 UsuarioLogin = dr["UsuarioLogin"].ToString(),
                                 NombreCompleto = dr ["NombreCompleto"].ToString(),
                                 Correo = dr ["Correo"].ToString(),

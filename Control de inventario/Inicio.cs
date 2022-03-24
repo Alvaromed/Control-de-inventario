@@ -10,16 +10,20 @@ using System.Windows.Forms;
 using Entidad;
 using FontAwesome.Sharp;
 using Negocio;
+using Control_de_inventario.SegundosFormCompras;
 
 namespace Control_de_inventario
 {
+   
     public partial class Inicio : Form
     {
         private static Usuario usuarioActual;
         private static IconMenuItem MenuACtual = null;
         private static Form FormularioActual = null;
+        
         public Inicio(Usuario objUsuario)
         {
+            
             usuarioActual = objUsuario;
             InitializeComponent();
         }
@@ -55,6 +59,14 @@ namespace Control_de_inventario
 
         private void Inicio_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+            //DialogResult cierreForm = MessageBox.Show("¿desea salir al login?","",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            //if (cierreForm == DialogResult.Yes)
+            //{
+            //    Login login = new Login();
+            //    login.Show();
+            //    this.Close();
+            //}
             //if (MessageBox.Show("¿Deseas cerrar sesión?", "Cierre de Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             //{
             //    Application.Exit();
@@ -87,9 +99,14 @@ namespace Control_de_inventario
             formulario.Dock = DockStyle.Fill;
             formulario.BackColor = Color.LightGray;
 
+            panelBienvenida.Visible = false;
+            lblWelcome.Visible = false;
+            lblUsuario.Visible = false;
+
             //Agrega el formulario a contenido
             contenido.Controls.Add(formulario);
             formulario.Show();
+            
 
         }
 
@@ -114,8 +131,11 @@ namespace Control_de_inventario
                     iconMenu.Visible = false;
                 }
             }
-
+            
             labelUsu.Text = usuarioActual.UsuarioLogin;
+            lblUsuario.Text = usuarioActual.UsuarioLogin;
+            //this.MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
+            //this.WindowState = FormWindowState.Maximized;
         }
 
         private void menuHerramientas_Click(object sender, EventArgs e)
@@ -126,6 +146,7 @@ namespace Control_de_inventario
         private void categoria_Click(object sender, EventArgs e)
         {
             formOpen(menuConfiguracion, new FormCategoria());
+            
         }
 
         private void producto_Click(object sender, EventArgs e)
@@ -135,12 +156,12 @@ namespace Control_de_inventario
 
         private void menuInfo_Click(object sender, EventArgs e)
         {
-
+            formOpen(menuConfiguracion, new FormInfo());
         }
 
         private void registrarVenta_Click(object sender, EventArgs e)
         {
-            formOpen(menuVentas, new FormVentas());
+            formOpen(menuVentas, new FormVentas(usuarioActual));
         }
 
         private void detalleVenta_Click(object sender, EventArgs e)
@@ -171,6 +192,157 @@ namespace Control_de_inventario
         private void negocio_Click(object sender, EventArgs e)
         {
             formOpen(menuConfiguracion, new FormNegocio());
+        }
+
+        private void timerSistema_Tick(object sender, EventArgs e)
+        {
+            lblHoraSistema.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        private void menuProducto_Click(object sender, EventArgs e)
+        {
+            formOpen(menuProducto, new FormListaProductos());
+        }
+
+        private void menuUsuarios_MouseHover(object sender, EventArgs e)
+        {
+            //this.Cursor = Cursors.Hand;
+        }
+
+        private void categoria_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+       
+
+        private void producto_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        private void negocio_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        private void menuProducto_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        private void registrarVenta_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        private void detalleVenta_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        private void registrarCompra_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        private void detalleCompra_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        private void menuProveedores_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        private void menuReportes_MouseHover(object sender, EventArgs e)
+        {
+            cursorHand();
+        }
+
+        
+
+        private void lblHoraSistema_MouseHover(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.No;
+        }
+
+        private void lblHoraSistema_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+       
+
+        private void menuUsuarios_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void categoria_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void producto_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void negocio_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void menuProducto_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void registrarVenta_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void detalleVenta_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void registrarCompra_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void detalleCompra_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void menuProveedores_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void menuReportes_MouseLeave(object sender, EventArgs e)
+        {
+            cursorDefault();
+        }
+
+        private void cursorHand()
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void cursorDefault()
+        {
+            this.Cursor = Cursors.Default;
+        }
+
+        private void Menu_Scroll(object sender, ScrollEventArgs e)
+        {
+
         }
     }
 }

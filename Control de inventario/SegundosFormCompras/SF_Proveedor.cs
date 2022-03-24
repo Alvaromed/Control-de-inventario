@@ -99,5 +99,10 @@ namespace Control_de_inventario.SegundosFormCompras
                 }
             }
         }
+
+        private void dataProveedor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

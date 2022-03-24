@@ -170,6 +170,8 @@ namespace Control_de_inventario
 
         private void FormCategoria_Load(object sender, EventArgs e)
         {
+            
+
             comboEstado.Items.Add(new OPcionCombo() { Valor = 1, Texto = "Activo" });
             comboEstado.Items.Add(new OPcionCombo() { Valor = 0, Texto = "Desactivado" });
 
@@ -305,6 +307,21 @@ namespace Control_de_inventario
                 e.Handled = true;
             }
 
+
+            if (e.ColumnIndex == 5)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                var width = Properties.Resources.icons8_trash_25.Width;
+                var heigth = Properties.Resources.icons8_trash_25.Height;
+
+                var x = e.CellBounds.Left + (e.CellBounds.Width - width) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - heigth) / 2;
+
+                e.Graphics.DrawImage(Properties.Resources.icons8_trash_25, new Rectangle(x, y, width, heigth));
+                e.Handled = true;
+
+            }
+
         }
 
         private void dataCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -338,6 +355,48 @@ namespace Control_de_inventario
 
                 }
 
+            }
+
+            if (dataCategorias.Columns[e.ColumnIndex].Name == "btnEliminarCategoria")
+            {
+                string nombreCategoria = dataCategorias.CurrentRow.Cells[2].Value.ToString();
+                string nombre = dataCategorias.CurrentRow.Cells[3].Value.ToString();
+
+                int indice = e.RowIndex;
+
+                if (indice >= 0)
+                {
+                    txtIndiceFila.Text = indice.ToString();
+                    txtId.Text = dataCategorias.Rows[indice].Cells["IdCategoria"].Value.ToString();
+
+
+                    DialogResult questionProducto = MessageBox.Show("¿Desea eliminar la categoria: " + nombreCategoria + " de la lista?", "Eliminacion de Categoría", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (questionProducto == DialogResult.Yes)
+                    {
+                        string mensaje = string.Empty;
+
+                        Categoria categoria= new Categoria()
+                        {
+
+                            //Lenado de todos los campos dentro de FormUsuarios
+                            IdCategoria = Convert.ToInt32(txtId.Text),
+
+                        };
+
+                        bool eliminar = new N_Categoria().Delete(categoria, out mensaje);
+                        if (eliminar)
+                        {
+                            dataCategorias.Rows.RemoveAt(Convert.ToInt32(txtIndiceFila.Text));
+                            BorrarCampos();
+                        }
+                        else
+                        {
+                            MessageBox.Show(mensaje, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+
+                }
             }
 
         }
@@ -375,24 +434,49 @@ namespace Control_de_inventario
 
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
+            progressBarListaProductos.Visible = true;
 
-            //Nos ayudará a filtrar la columna de búsqueda
-            string columna = ((OPcionCombo)comboBuscar.SelectedItem).Valor.ToString();
+            int valorMinimo, valorMaximo;
+           
+            valorMinimo = progressBarListaProductos.Minimum = 1;
+            valorMaximo = progressBarListaProductos.Maximum = 1500;
 
-            if (dataCategorias.Rows.Count > 0)
+
+            for (int i = valorMinimo; i <= valorMaximo; i++)
             {
-                foreach (DataGridViewRow fila in dataCategorias.Rows)
-                {
-                    if (fila.Cells[columna].Value.ToString().Trim().ToUpper().Contains(txtBuscar.Text.Trim().ToUpper()))
-                    {
-                        fila.Visible = true;
-                    }
-                    else
-                    {
-                        fila.Visible = false;
-                    }
-                }
+
+                this.btnBuscar.Cursor = Cursors.WaitCursor;
+                progressBarListaProductos.Value = i;
+                progressBarListaProductos.PerformStep();
+
             }
+
+            if (progressBarListaProductos.Value == 1500)
+            {
+
+                //Nos ayudará a filtrar la columna de búsqueda
+                string columna = ((OPcionCombo)comboBuscar.SelectedItem).Valor.ToString();
+
+                if (dataCategorias.Rows.Count > 0)
+                {
+                    progressBarListaProductos.Value = 1;
+                    foreach (DataGridViewRow fila in dataCategorias.Rows)
+                    {
+                        if (fila.Cells[columna].Value.ToString().Trim().ToUpper().Contains(txtBuscar.Text.Trim().ToUpper()))
+                        {
+                            fila.Visible = true;
+                            progressBarListaProductos.Visible = false;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
+                    }
+                   
+                }
+                this.btnBuscar.Cursor = Cursors.Hand;
+            }
+
 
         }
 
@@ -406,6 +490,12 @@ namespace Control_de_inventario
             }
         }
 
-        
+        private void txtCategoria_TextChanged(object sender, EventArgs e)
+        {
+            if (txtCategoria.Text == "")
+            {
+                txtId.Text = "0";
+            }
+        }
     }
 }

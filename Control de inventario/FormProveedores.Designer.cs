@@ -29,11 +29,9 @@ namespace Control_de_inventario
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnRestablecerBusqueda = new FontAwesome.Sharp.IconButton();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtIndiceFila = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.comboBuscar = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -41,9 +39,6 @@ namespace Control_de_inventario
             this.label4 = new System.Windows.Forms.Label();
             this.dataProveedor = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnBorrar = new FontAwesome.Sharp.IconButton();
-            this.btnLimpiar = new FontAwesome.Sharp.IconButton();
-            this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.comboEstado = new System.Windows.Forms.ComboBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
@@ -57,6 +52,12 @@ namespace Control_de_inventario
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBarListaProductos = new System.Windows.Forms.ProgressBar();
+            this.btnRestablecerBusqueda = new FontAwesome.Sharp.IconButton();
+            this.btnBuscar = new FontAwesome.Sharp.IconButton();
+            this.btnBorrar = new FontAwesome.Sharp.IconButton();
+            this.btnLimpiar = new FontAwesome.Sharp.IconButton();
+            this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.btnSeleccionarProveedor = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IdProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,30 +66,9 @@ namespace Control_de_inventario
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EstadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarProveedor = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataProveedor)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnRestablecerBusqueda
-            // 
-            this.btnRestablecerBusqueda.BackColor = System.Drawing.Color.Silver;
-            this.btnRestablecerBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRestablecerBusqueda.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnRestablecerBusqueda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btnRestablecerBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRestablecerBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestablecerBusqueda.IconChar = FontAwesome.Sharp.IconChar.TrashRestore;
-            this.btnRestablecerBusqueda.IconColor = System.Drawing.Color.Black;
-            this.btnRestablecerBusqueda.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRestablecerBusqueda.IconSize = 13;
-            this.btnRestablecerBusqueda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRestablecerBusqueda.Location = new System.Drawing.Point(755, 411);
-            this.btnRestablecerBusqueda.Name = "btnRestablecerBusqueda";
-            this.btnRestablecerBusqueda.Size = new System.Drawing.Size(135, 23);
-            this.btnRestablecerBusqueda.TabIndex = 53;
-            this.btnRestablecerBusqueda.Text = "Restablecer búsqueda";
-            this.btnRestablecerBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRestablecerBusqueda.UseVisualStyleBackColor = false;
-            this.btnRestablecerBusqueda.Click += new System.EventHandler(this.btnRestablecerBusqueda_Click);
             // 
             // txtIndiceFila
             // 
@@ -99,31 +79,12 @@ namespace Control_de_inventario
             this.txtIndiceFila.Text = "*";
             this.txtIndiceFila.Visible = false;
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnBuscar.FlatAppearance.BorderSize = 2;
-            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.Search;
-            this.btnBuscar.IconColor = System.Drawing.Color.Black;
-            this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnBuscar.IconSize = 15;
-            this.btnBuscar.Location = new System.Drawing.Point(853, 206);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(37, 21);
-            this.btnBuscar.TabIndex = 52;
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(726, 206);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(121, 20);
-            this.txtBuscar.TabIndex = 51;
+            this.txtBuscar.TabIndex = 9;
             // 
             // comboBuscar
             // 
@@ -132,7 +93,7 @@ namespace Control_de_inventario
             this.comboBuscar.Location = new System.Drawing.Point(618, 205);
             this.comboBuscar.Name = "comboBuscar";
             this.comboBuscar.Size = new System.Drawing.Size(102, 21);
-            this.comboBuscar.TabIndex = 50;
+            this.comboBuscar.TabIndex = 8;
             // 
             // label11
             // 
@@ -174,15 +135,15 @@ namespace Control_de_inventario
             this.dataProveedor.AllowUserToDeleteRows = false;
             this.dataProveedor.BackgroundColor = System.Drawing.Color.Coral;
             this.dataProveedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataProveedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataProveedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataProveedor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionarProveedor,
@@ -192,15 +153,16 @@ namespace Control_de_inventario
             this.Correo,
             this.Telefono,
             this.EstadoValor,
-            this.Estado});
+            this.Estado,
+            this.btnEliminarProveedor});
             this.dataProveedor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataProveedor.Location = new System.Drawing.Point(16, 238);
             this.dataProveedor.MultiSelect = false;
             this.dataProveedor.Name = "dataProveedor";
             this.dataProveedor.ReadOnly = true;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataProveedor.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataProveedor.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataProveedor.RowTemplate.Height = 28;
             this.dataProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataProveedor.Size = new System.Drawing.Size(874, 167);
@@ -219,72 +181,6 @@ namespace Control_de_inventario
             this.label3.TabIndex = 54;
             this.label3.Text = "Configuración de Proveedores";
             // 
-            // btnBorrar
-            // 
-            this.btnBorrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBorrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnBorrar.FlatAppearance.BorderSize = 2;
-            this.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBorrar.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.btnBorrar.IconColor = System.Drawing.Color.Black;
-            this.btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnBorrar.IconSize = 18;
-            this.btnBorrar.Location = new System.Drawing.Point(755, 128);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(101, 29);
-            this.btnBorrar.TabIndex = 49;
-            this.btnBorrar.Text = "Eliminar";
-            this.btnBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBorrar.UseVisualStyleBackColor = false;
-            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnLimpiar.FlatAppearance.BorderSize = 2;
-            this.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow;
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.Broom;
-            this.btnLimpiar.IconColor = System.Drawing.Color.Black;
-            this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLimpiar.IconSize = 18;
-            this.btnLimpiar.Location = new System.Drawing.Point(755, 84);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(101, 29);
-            this.btnLimpiar.TabIndex = 48;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLimpiar.UseVisualStyleBackColor = false;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnGuardar.FlatAppearance.BorderSize = 2;
-            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.btnGuardar.IconColor = System.Drawing.Color.Black;
-            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardar.IconSize = 18;
-            this.btnGuardar.Location = new System.Drawing.Point(755, 41);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(101, 29);
-            this.btnGuardar.TabIndex = 46;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
             // comboEstado
             // 
             this.comboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -292,28 +188,28 @@ namespace Control_de_inventario
             this.comboEstado.Location = new System.Drawing.Point(249, 107);
             this.comboEstado.Name = "comboEstado";
             this.comboEstado.Size = new System.Drawing.Size(121, 21);
-            this.comboEstado.TabIndex = 39;
+            this.comboEstado.TabIndex = 5;
             // 
             // txtCorreo
             // 
             this.txtCorreo.Location = new System.Drawing.Point(17, 108);
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(187, 20);
-            this.txtCorreo.TabIndex = 37;
+            this.txtCorreo.TabIndex = 4;
             // 
             // txtRazonSocial
             // 
             this.txtRazonSocial.Location = new System.Drawing.Point(249, 58);
             this.txtRazonSocial.Name = "txtRazonSocial";
             this.txtRazonSocial.Size = new System.Drawing.Size(187, 20);
-            this.txtRazonSocial.TabIndex = 36;
+            this.txtRazonSocial.TabIndex = 2;
             // 
             // txtDocumento
             // 
             this.txtDocumento.Location = new System.Drawing.Point(17, 59);
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(187, 20);
-            this.txtDocumento.TabIndex = 33;
+            this.txtDocumento.TabIndex = 1;
             // 
             // label10
             // 
@@ -388,7 +284,7 @@ namespace Control_de_inventario
             this.txtTelefono.Location = new System.Drawing.Point(484, 59);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(187, 20);
-            this.txtTelefono.TabIndex = 61;
+            this.txtTelefono.TabIndex = 3;
             // 
             // label1
             // 
@@ -400,12 +296,129 @@ namespace Control_de_inventario
             this.label1.TabIndex = 62;
             this.label1.Text = "Teléfono";
             // 
+            // progressBarListaProductos
+            // 
+            this.progressBarListaProductos.Location = new System.Drawing.Point(643, 420);
+            this.progressBarListaProductos.Name = "progressBarListaProductos";
+            this.progressBarListaProductos.Size = new System.Drawing.Size(97, 14);
+            this.progressBarListaProductos.TabIndex = 67;
+            this.progressBarListaProductos.Visible = false;
+            // 
+            // btnRestablecerBusqueda
+            // 
+            this.btnRestablecerBusqueda.BackColor = System.Drawing.Color.Silver;
+            this.btnRestablecerBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestablecerBusqueda.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnRestablecerBusqueda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btnRestablecerBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestablecerBusqueda.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestablecerBusqueda.IconChar = FontAwesome.Sharp.IconChar.TrashRestore;
+            this.btnRestablecerBusqueda.IconColor = System.Drawing.Color.Black;
+            this.btnRestablecerBusqueda.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRestablecerBusqueda.IconSize = 13;
+            this.btnRestablecerBusqueda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRestablecerBusqueda.Location = new System.Drawing.Point(755, 411);
+            this.btnRestablecerBusqueda.Name = "btnRestablecerBusqueda";
+            this.btnRestablecerBusqueda.Size = new System.Drawing.Size(135, 23);
+            this.btnRestablecerBusqueda.TabIndex = 11;
+            this.btnRestablecerBusqueda.Text = "Restablecer búsqueda";
+            this.btnRestablecerBusqueda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRestablecerBusqueda.UseVisualStyleBackColor = false;
+            this.btnRestablecerBusqueda.Click += new System.EventHandler(this.btnRestablecerBusqueda_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnBuscar.FlatAppearance.BorderSize = 2;
+            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.IconChar = FontAwesome.Sharp.IconChar.Search;
+            this.btnBuscar.IconColor = System.Drawing.Color.Black;
+            this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBuscar.IconSize = 15;
+            this.btnBuscar.Location = new System.Drawing.Point(853, 206);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(37, 21);
+            this.btnBuscar.TabIndex = 10;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBorrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnBorrar.FlatAppearance.BorderSize = 2;
+            this.btnBorrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnBorrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBorrar.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.btnBorrar.IconColor = System.Drawing.Color.Black;
+            this.btnBorrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnBorrar.IconSize = 18;
+            this.btnBorrar.Location = new System.Drawing.Point(755, 128);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(101, 29);
+            this.btnBorrar.TabIndex = 49;
+            this.btnBorrar.Text = "Eliminar";
+            this.btnBorrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBorrar.UseVisualStyleBackColor = false;
+            this.btnBorrar.Visible = false;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnLimpiar.FlatAppearance.BorderSize = 2;
+            this.btnLimpiar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.IconChar = FontAwesome.Sharp.IconChar.Broom;
+            this.btnLimpiar.IconColor = System.Drawing.Color.Black;
+            this.btnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLimpiar.IconSize = 18;
+            this.btnLimpiar.Location = new System.Drawing.Point(755, 84);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(101, 29);
+            this.btnLimpiar.TabIndex = 7;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnGuardar.FlatAppearance.BorderSize = 2;
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnGuardar.IconColor = System.Drawing.Color.Black;
+            this.btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardar.IconSize = 18;
+            this.btnGuardar.Location = new System.Drawing.Point(755, 41);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(101, 29);
+            this.btnGuardar.TabIndex = 6;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // btnSeleccionarProveedor
             // 
             this.btnSeleccionarProveedor.FillWeight = 10F;
             this.btnSeleccionarProveedor.HeaderText = "";
             this.btnSeleccionarProveedor.Name = "btnSeleccionarProveedor";
             this.btnSeleccionarProveedor.ReadOnly = true;
+            this.btnSeleccionarProveedor.UseColumnTextForButtonValue = true;
             this.btnSeleccionarProveedor.Width = 35;
             // 
             // IdProveedor
@@ -460,11 +473,20 @@ namespace Control_de_inventario
             this.Estado.ReadOnly = true;
             this.Estado.Width = 113;
             // 
+            // btnEliminarProveedor
+            // 
+            this.btnEliminarProveedor.HeaderText = "";
+            this.btnEliminarProveedor.Name = "btnEliminarProveedor";
+            this.btnEliminarProveedor.ReadOnly = true;
+            this.btnEliminarProveedor.UseColumnTextForButtonValue = true;
+            this.btnEliminarProveedor.Width = 50;
+            // 
             // FormProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 459);
+            this.Controls.Add(this.progressBarListaProductos);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
@@ -492,7 +514,6 @@ namespace Control_de_inventario
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label9);
             this.Name = "FormProveedores";
-            this.Text = "FormProveedores";
             this.Load += new System.EventHandler(this.FormProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataProveedor)).EndInit();
             this.ResumeLayout(false);
@@ -528,6 +549,7 @@ namespace Control_de_inventario
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBarListaProductos;
         private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionarProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
@@ -536,5 +558,6 @@ namespace Control_de_inventario
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstadoValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEliminarProveedor;
     }
 }

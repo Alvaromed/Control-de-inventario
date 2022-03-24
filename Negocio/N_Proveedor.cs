@@ -101,5 +101,10 @@ namespace Negocio
             return objD_Proveedor.Delete(proveedor, out mensaje);
         }
 
+        public string Consulta(Proveedor proveedor)
+        {
+            return objD_Proveedor.Consulta(proveedor);
+        }
+
     }
 }

@@ -19,6 +19,18 @@ namespace Control_de_inventario
         public FormUsuarios()
         {
             InitializeComponent();
+            this.toolMessage.SetToolTip(txtUsuario, "Introduce el usuario");
+            this.toolMessage.SetToolTip(txtNombre, "Introduce el nombre");
+            this.toolMessage.SetToolTip(txtCorreo, "Introduce el correo");
+            this.toolMessage.SetToolTip(txtPass, "Introduce la contraseña");
+            this.toolMessage.SetToolTip(txtConfirPass, "Introduce la confirmación de contraseña");
+            this.toolMessage.SetToolTip(btnBuscar, "Buscar");
+
+
+
+
+
+
         }
 
 
@@ -182,21 +194,37 @@ namespace Control_de_inventario
 
             if (e.RowIndex < 0)
                 return;
-           
-            if (e.ColumnIndex == 0 )
+
+            if (e.ColumnIndex == 0)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 var width = Properties.Resources.check.Width;
                 var heigth = Properties.Resources.check.Height;
 
-                var x = e.CellBounds.Left+ (e.CellBounds.Width - width) / 2;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - width) / 2;
                 var y = e.CellBounds.Top + (e.CellBounds.Height - heigth) / 2;
 
                 e.Graphics.DrawImage(Properties.Resources.check, new Rectangle(x, y, width, heigth));
                 e.Handled = true;
             }
 
+
+
+            if (e.ColumnIndex == 10)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                var width = Properties.Resources.icons8_trash_25.Width;
+                var heigth = Properties.Resources.icons8_trash_25.Height;
+
+                var x = e.CellBounds.Left + (e.CellBounds.Width - width) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - heigth) / 2;
+
+                e.Graphics.DrawImage(Properties.Resources.icons8_trash_25, new Rectangle(x, y, width, heigth));
+                e.Handled = true;
+
+            }
         }
+        
 
         private void dataUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -246,7 +274,49 @@ namespace Control_de_inventario
                 }
 
             }
-            
+
+            if (dataUsuarios.Columns[e.ColumnIndex].Name == "btnEliminarUsuario")
+            {
+                string usuarioNombre = dataUsuarios.CurrentRow.Cells[2].Value.ToString();
+                string nombre = dataUsuarios.CurrentRow.Cells[3].Value.ToString();
+
+                int indice = e.RowIndex;
+
+                if (indice >= 0)
+                {
+                    txtIndiceFila.Text = indice.ToString();
+                    txtId.Text = dataUsuarios.Rows[indice].Cells["IdUsuario"].Value.ToString();
+
+
+                    DialogResult questionProducto = MessageBox.Show("¿Desea eliminar el usuario: " + usuarioNombre + ", nombre:" + nombre + " de la lista?", "Eliminacion de producto", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (questionProducto == DialogResult.Yes)
+                    {
+                        string mensaje = string.Empty;
+
+                        Usuario usuario = new Usuario()
+                        {
+
+                            //Lenado de todos los campos dentro de FormUsuarios
+                            IdUsuario = Convert.ToInt32(txtId.Text),
+
+                        };
+
+                        bool eliminar = new N_Usuario().Delete(usuario, out mensaje);
+                        if (eliminar)
+                        {
+                            dataUsuarios.Rows.RemoveAt(Convert.ToInt32(txtIndiceFila.Text));
+                            BorrarCampos();
+                        }
+                        else
+                        {
+                            MessageBox.Show(mensaje, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+
+                }
+            }
+
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
@@ -282,23 +352,49 @@ namespace Control_de_inventario
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            //Nos ayudará a filtrar la columna de búsqueda
-            string columna = ((OPcionCombo)comboBuscar.SelectedItem).Valor.ToString();
 
-            if(dataUsuarios.Rows.Count > 0)
+            progressBarListaProductos.Visible = true;
+
+
+
+            //timerProgreso_Tick(sender,e);
+            int valorMinimo, valorMaximo;
+            valorMinimo = progressBarListaProductos.Minimum = 1;
+            valorMaximo = progressBarListaProductos.Maximum = 2500;
+
+            for (int i = valorMinimo; i <= valorMaximo; i++)
             {
-                foreach(DataGridViewRow fila in dataUsuarios.Rows)
+                progressBarListaProductos.Value = i;
+                progressBarListaProductos.PerformStep();
+                this.btnBuscar.Cursor = Cursors.WaitCursor;
+
+            }
+
+            if (progressBarListaProductos.Value == 2500)
+            {
+                //Nos ayudará a filtrar la columna de búsqueda
+                string columna = ((OPcionCombo)comboBuscar.SelectedItem).Valor.ToString();
+
+                if (dataUsuarios.Rows.Count > 0)
                 {
-                    if (fila.Cells[columna].Value.ToString().Trim().ToUpper().Contains(txtBuscar.Text.Trim().ToUpper()))
+                    progressBarListaProductos.Value = 1;
+                    foreach (DataGridViewRow fila in dataUsuarios.Rows)
                     {
-                        fila.Visible = true;
+                        if (fila.Cells[columna].Value.ToString().Trim().ToUpper().Contains(txtBuscar.Text.Trim().ToUpper()))
+                        {
+                            fila.Visible = true;
+                            progressBarListaProductos.Visible = false;
+                        }
+                        else
+                        {
+                            fila.Visible = false;
+                        }
                     }
-                    else
-                    {
-                        fila.Visible = false;
-                    }
+                    this.btnBuscar.Cursor = Cursors.Hand;
                 }
             }
+
+            
 
         }
 

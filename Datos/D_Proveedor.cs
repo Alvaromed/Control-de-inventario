@@ -233,6 +233,37 @@ namespace Datos
             return respuesta;
         }
 
+        public string Consulta(Proveedor proveedor)
+        {
+            string textProve = proveedor.IdProveedor.ToString();
+            using (SqlConnection connection = new SqlConnection(Conexion.conexion))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT IdProveedor,Documento,RazonSocial from PROVEEDOR WHERE RazonSocial = @RazonSocial");
+                    SqlCommand cmd = new SqlCommand(query.ToString(), connection);
+                    cmd.Parameters.AddWithValue("@RazonSocial", proveedor.RazonSocial);
+                    cmd.CommandType = CommandType.Text;
 
+
+                    connection.Open();
+                    SqlDataReader registro = cmd.ExecuteReader();
+                    if (registro.Read())
+                    {
+                        proveedor.IdProveedor = Convert.ToInt32(registro["IdProveedor"]);
+                        proveedor.Documento = registro["Documento"].ToString();
+                    }
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+
+                    string mensaje = ex.Message;
+                }
+            }
+
+            return textProve;
+        }
     }
 }

@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +51,12 @@
     <ApplicationIcon>Miscelanea YOLIS Logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
+    </Reference>
     <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
     </Reference>
@@ -47,6 +68,12 @@
     </Reference>
     <Reference Include="FontAwesome.Sharp, Version=5.15.4.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.15.4\lib\net45\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.3\lib\itextsharp.xmlworker.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -69,10 +96,16 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConboBox\OPcionCombo.cs" />
     <Compile Include="DesignButtons\RJButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DesignProgressBar\RJProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FormCategoria.cs">
@@ -104,6 +137,18 @@
     </Compile>
     <Compile Include="FormDetalleVenta.Designer.cs">
       <DependentUpon>FormDetalleVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInfo.Designer.cs">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormListaProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListaProductos.Designer.cs">
+      <DependentUpon>FormListaProductos.cs</DependentUpon>
     </Compile>
     <Compile Include="FormNegocio.cs">
       <SubType>Form</SubType>
@@ -155,6 +200,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SegundosFormCompras\SF_Producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SegundosFormCompras\SF_Producto.Designer.cs">
+      <DependentUpon>SF_Producto.cs</DependentUpon>
+    </Compile>
     <Compile Include="SegundosFormCompras\SF_Proveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +220,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCompras.resx">
       <DependentUpon>FormCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetalleCompra.resx">
+      <DependentUpon>FormDetalleCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInfo.resx">
+      <DependentUpon>FormInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListaProductos.resx">
+      <DependentUpon>FormListaProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNegocio.resx">
       <DependentUpon>FormNegocio.cs</DependentUpon>
@@ -204,6 +264,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SegundosFormCompras\SF_Producto.resx">
+      <DependentUpon>SF_Producto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SegundosFormCompras\SF_Proveedor.resx">
       <DependentUpon>SF_Proveedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,11 +338,31 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Miscelanea YOLIS Logo.ico" />
+    <None Include="Resources\ticket.html" />
+    <None Include="Resources\pdf_ticket.html" />
+    <None Include="Resources\design.css" />
+    <None Include="Resources\microsoft_excel321.png" />
+    <None Include="Resources\microsoft_excel32.png" />
+    <None Include="Resources\microsoft_excel_icon1.png" />
+    <None Include="Resources\microsoft_excel_icon.png" />
+    <None Include="Resources\icons8-trash-25.png" />
     <None Include="Resources\addTag.png" />
     <None Include="Resources\add product.png" />
     <None Include="Resources\unlockBueno.png" />
     <None Include="Resources\unlock.png" />
     <None Include="Resources\Icon1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
