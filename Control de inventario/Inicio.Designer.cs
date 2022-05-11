@@ -45,9 +45,12 @@ namespace Control_de_inventario
             this.menuCompras = new FontAwesome.Sharp.IconMenuItem();
             this.registrarCompra = new FontAwesome.Sharp.IconMenuItem();
             this.detalleCompra = new FontAwesome.Sharp.IconMenuItem();
-            this.menuClientes = new FontAwesome.Sharp.IconMenuItem();
             this.menuProveedores = new FontAwesome.Sharp.IconMenuItem();
             this.menuReportes = new FontAwesome.Sharp.IconMenuItem();
+            this.reportesCompras = new FontAwesome.Sharp.IconMenuItem();
+            this.reporteVentas = new FontAwesome.Sharp.IconMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.Total = new FontAwesome.Sharp.IconMenuItem();
             this.menuInfo = new FontAwesome.Sharp.IconMenuItem();
             this.Titulo = new System.Windows.Forms.MenuStrip();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,7 +82,6 @@ namespace Control_de_inventario
             this.menuProducto,
             this.menuVentas,
             this.menuCompras,
-            this.menuClientes,
             this.menuProveedores,
             this.menuReportes,
             this.menuInfo});
@@ -87,7 +89,7 @@ namespace Control_de_inventario
             this.Menu.Name = "Menu";
             this.Menu.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Menu.ShowItemToolTips = true;
-            this.Menu.Size = new System.Drawing.Size(1348, 24);
+            this.Menu.Size = new System.Drawing.Size(2350, 24);
             this.Menu.TabIndex = 0;
             this.Menu.Text = "menuStrip1";
             this.Menu.Scroll += new System.Windows.Forms.ScrollEventHandler(this.Menu_Scroll);
@@ -191,7 +193,7 @@ namespace Control_de_inventario
             this.registrarVenta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.registrarVenta.Name = "registrarVenta";
             this.registrarVenta.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.registrarVenta.Size = new System.Drawing.Size(161, 22);
+            this.registrarVenta.Size = new System.Drawing.Size(174, 22);
             this.registrarVenta.Text = "Registrar";
             this.registrarVenta.Click += new System.EventHandler(this.registrarVenta_Click);
             this.registrarVenta.MouseLeave += new System.EventHandler(this.registrarVenta_MouseLeave);
@@ -203,7 +205,9 @@ namespace Control_de_inventario
             this.detalleVenta.IconColor = System.Drawing.Color.Black;
             this.detalleVenta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.detalleVenta.Name = "detalleVenta";
-            this.detalleVenta.Size = new System.Drawing.Size(161, 22);
+            this.detalleVenta.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.V)));
+            this.detalleVenta.Size = new System.Drawing.Size(174, 22);
             this.detalleVenta.Text = "Detalle";
             this.detalleVenta.Click += new System.EventHandler(this.detalleVenta_Click);
             this.detalleVenta.MouseLeave += new System.EventHandler(this.detalleVenta_MouseLeave);
@@ -248,16 +252,6 @@ namespace Control_de_inventario
             this.detalleCompra.MouseLeave += new System.EventHandler(this.detalleCompra_MouseLeave);
             this.detalleCompra.MouseHover += new System.EventHandler(this.detalleCompra_MouseHover);
             // 
-            // menuClientes
-            // 
-            this.menuClientes.IconChar = FontAwesome.Sharp.IconChar.UserFriends;
-            this.menuClientes.IconColor = System.Drawing.Color.Black;
-            this.menuClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.menuClientes.Name = "menuClientes";
-            this.menuClientes.Size = new System.Drawing.Size(77, 20);
-            this.menuClientes.Text = "Clientes";
-            this.menuClientes.Click += new System.EventHandler(this.menuClientes_Click);
-            // 
             // menuProveedores
             // 
             this.menuProveedores.IconChar = FontAwesome.Sharp.IconChar.Elementor;
@@ -273,6 +267,11 @@ namespace Control_de_inventario
             // 
             // menuReportes
             // 
+            this.menuReportes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportesCompras,
+            this.reporteVentas,
+            this.toolStripSeparator1,
+            this.Total});
             this.menuReportes.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
             this.menuReportes.IconColor = System.Drawing.Color.Black;
             this.menuReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -284,6 +283,41 @@ namespace Control_de_inventario
             this.menuReportes.Click += new System.EventHandler(this.menuReportes_Click);
             this.menuReportes.MouseLeave += new System.EventHandler(this.menuReportes_MouseLeave);
             this.menuReportes.MouseHover += new System.EventHandler(this.menuReportes_MouseHover);
+            // 
+            // reportesCompras
+            // 
+            this.reportesCompras.IconChar = FontAwesome.Sharp.IconChar.ChartPie;
+            this.reportesCompras.IconColor = System.Drawing.Color.Black;
+            this.reportesCompras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.reportesCompras.Name = "reportesCompras";
+            this.reportesCompras.Size = new System.Drawing.Size(122, 22);
+            this.reportesCompras.Text = "Compras";
+            this.reportesCompras.Click += new System.EventHandler(this.iconMenuItem1_Click);
+            // 
+            // reporteVentas
+            // 
+            this.reporteVentas.IconChar = FontAwesome.Sharp.IconChar.ChartLine;
+            this.reporteVentas.IconColor = System.Drawing.Color.Black;
+            this.reporteVentas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.reporteVentas.Name = "reporteVentas";
+            this.reporteVentas.Size = new System.Drawing.Size(122, 22);
+            this.reporteVentas.Text = "Ventas";
+            this.reporteVentas.Click += new System.EventHandler(this.iconMenuItem2_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(119, 6);
+            // 
+            // Total
+            // 
+            this.Total.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.Total.IconColor = System.Drawing.Color.Black;
+            this.Total.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Total.Name = "Total";
+            this.Total.Size = new System.Drawing.Size(122, 22);
+            this.Total.Text = "Total";
+            this.Total.Click += new System.EventHandler(this.Total_Click);
             // 
             // menuInfo
             // 
@@ -303,7 +337,7 @@ namespace Control_de_inventario
             this.Titulo.Location = new System.Drawing.Point(0, 0);
             this.Titulo.Name = "Titulo";
             this.Titulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Titulo.Size = new System.Drawing.Size(902, 56);
+            this.Titulo.Size = new System.Drawing.Size(1904, 56);
             this.Titulo.TabIndex = 1;
             this.Titulo.Text = "menuStrip2";
             // 
@@ -312,11 +346,11 @@ namespace Control_de_inventario
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Coral;
             this.label1.Font = new System.Drawing.Font("MV Boli", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(314, 9);
+            this.label1.Location = new System.Drawing.Point(875, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(217, 26);
+            this.label1.Size = new System.Drawing.Size(130, 26);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Control de Inventario";
+            this.label1.Text = "InventoryDA";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // contenido
@@ -327,7 +361,7 @@ namespace Control_de_inventario
             this.contenido.Controls.Add(this.panelBienvenida);
             this.contenido.Location = new System.Drawing.Point(0, 83);
             this.contenido.Name = "contenido";
-            this.contenido.Size = new System.Drawing.Size(902, 482);
+            this.contenido.Size = new System.Drawing.Size(1904, 912);
             this.contenido.TabIndex = 3;
             // 
             // panelBienvenida
@@ -339,15 +373,15 @@ namespace Control_de_inventario
             this.panelBienvenida.Controls.Add(this.lblWelcome);
             this.panelBienvenida.Location = new System.Drawing.Point(12, 67);
             this.panelBienvenida.Name = "panelBienvenida";
-            this.panelBienvenida.Size = new System.Drawing.Size(873, 364);
+            this.panelBienvenida.Size = new System.Drawing.Size(1875, 794);
             this.panelBienvenida.TabIndex = 4;
             // 
             // lblUsuario
             // 
             this.lblUsuario.Font = new System.Drawing.Font("Perpetua Titling MT", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(392, 145);
+            this.lblUsuario.Location = new System.Drawing.Point(992, 365);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(312, 72);
+            this.lblUsuario.Size = new System.Drawing.Size(410, 72);
             this.lblUsuario.TabIndex = 4;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -355,11 +389,11 @@ namespace Control_de_inventario
             // lblWelcome
             // 
             this.lblWelcome.Font = new System.Drawing.Font("Perpetua Titling MT", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(74, 145);
+            this.lblWelcome.Location = new System.Drawing.Point(636, 365);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(312, 72);
+            this.lblWelcome.Size = new System.Drawing.Size(359, 72);
             this.lblWelcome.TabIndex = 0;
-            this.lblWelcome.Text = "WELCOME";
+            this.lblWelcome.Text = "Bienvenido";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
@@ -368,16 +402,16 @@ namespace Control_de_inventario
             this.panel1.Controls.Add(this.labelUsu);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 571);
+            this.panel1.Location = new System.Drawing.Point(0, 1001);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(902, 40);
+            this.panel1.Size = new System.Drawing.Size(1904, 40);
             this.panel1.TabIndex = 3;
             // 
             // lblHoraSistema
             // 
             this.lblHoraSistema.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHoraSistema.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.lblHoraSistema.Location = new System.Drawing.Point(708, 13);
+            this.lblHoraSistema.Location = new System.Drawing.Point(1710, 13);
             this.lblHoraSistema.Name = "lblHoraSistema";
             this.lblHoraSistema.Size = new System.Drawing.Size(179, 22);
             this.lblHoraSistema.TabIndex = 2;
@@ -420,7 +454,7 @@ namespace Control_de_inventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 611);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.contenido);
             this.Controls.Add(this.Menu);
@@ -455,7 +489,6 @@ namespace Control_de_inventario
         private FontAwesome.Sharp.IconMenuItem menuConfiguracion;
         private FontAwesome.Sharp.IconMenuItem menuVentas;
         private FontAwesome.Sharp.IconMenuItem menuCompras;
-        private FontAwesome.Sharp.IconMenuItem menuClientes;
         private FontAwesome.Sharp.IconMenuItem menuProveedores;
         private FontAwesome.Sharp.IconMenuItem menuReportes;
         private FontAwesome.Sharp.IconMenuItem menuInfo;
@@ -476,6 +509,10 @@ namespace Control_de_inventario
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Panel panelBienvenida;
         private System.Windows.Forms.Label lblUsuario;
+        private FontAwesome.Sharp.IconMenuItem reportesCompras;
+        private FontAwesome.Sharp.IconMenuItem reporteVentas;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private FontAwesome.Sharp.IconMenuItem Total;
     }
 }
 

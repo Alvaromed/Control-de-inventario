@@ -79,7 +79,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("MontoPago",venta.MontoPago);
                     cmd.Parameters.AddWithValue("MontoCambio",venta.MontoCambio);
                     cmd.Parameters.AddWithValue("MontoTotal", venta.MontoTotal);
-                    cmd.Parameters.AddWithValue("DetalleCompra", detalleVenta);
+                    cmd.Parameters.AddWithValue("DetalleVenta", detalleVenta);
 
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -181,6 +181,130 @@ namespace Datos
             return respuesta;
         }
 
+        public Venta ObtenerVenta(string numero)
+        {
+            Venta venta = new Venta();
 
+            using(SqlConnection connection = new SqlConnection(Conexion.conexion))
+            {
+                try
+                {
+                    connection.Open();
+                    StringBuilder query = new StringBuilder();
+
+
+                    //SELECT
+                    //v.IdVenta,u.UsuarioLogin,
+                    //v.TipoDocumento,v.NumeroDocumento,
+                    //v.MontoPago,v.MontoCambio,v.MontoTotal,
+                    //CONVERT(char(19), v.FechaVenta, 20)[FechaVenta]
+                    //FROM VENTA v inner join USUARIO u on u.IdUsuario = v.IdUsuario
+                    //WHERE v.NumeroDocumento = '000020'
+
+                    query.AppendLine("SELECT v.IdVenta,u.UsuarioLogin,");
+                    query.AppendLine("v.TipoDocumento,v.NumeroDocumento,");
+                    query.AppendLine("v.MontoPago,v.MontoCambio,v.MontoTotal,");
+                    query.AppendLine("CONVERT(char(19), v.FechaVenta, 20)[FechaVenta]");
+                    query.AppendLine("FROM VENTA v inner join USUARIO u on u.IdUsuario = v.IdUsuario");
+                    query.AppendLine("WHERE v.NumeroDocumento = @numero");
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), connection);
+                    cmd.Parameters.AddWithValue("@numero", numero);
+                    cmd.CommandType = System.Data.CommandType.Text;
+
+                    using(SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while(dr.Read())
+                        {
+                            venta = new Venta()
+                            {
+                                IdVenta = int.Parse(dr["IdVenta"].ToString()),
+                                objUsuario = new Usuario() { UsuarioLogin = dr["UsuarioLogin"].ToString() },
+                                TipoDocumento = dr["TipoDocumento"].ToString(),
+                                NumeroDocumento = dr["NumeroDocumento"].ToString(),
+                                MontoPago = Convert.ToDecimal(dr["MontoPago"].ToString()),
+                                MontoCambio = Convert.ToDecimal(dr["MontoCambio"].ToString()),
+                                MontoTotal = Convert.ToDecimal(dr["MontoTotal"].ToString()),
+                                FechaVenta = dr["FechaVenta"].ToString()
+
+
+                            };
+                        }
+                    }
+
+
+
+                }
+                catch (Exception)
+                {
+
+                    venta = new Venta();
+                }
+            }
+
+            return venta;
+        }
+
+
+        public List<Detalle_Venta> ObtenerDetalleVenta(int idVenta)
+        {
+            List<Detalle_Venta> listaVenta = new List<Detalle_Venta>();
+
+            using (SqlConnection connection = new SqlConnection(Conexion.conexion))
+            {
+                try
+                {
+                    connection.Open();
+                    StringBuilder query = new StringBuilder();
+
+
+                    //SELECT p.Nombre,p.Descripcion,
+                    //dv.PrecioVenta,dv.Cantidad,dv.SubTotal
+                    //FROM DETALLE_VENTA dv
+                    //inner join PRODUCTO p on p.IdProducto = dv.IdProducto
+                    //WHERE dv.IdVenta = 1
+
+                    query.AppendLine("SELECT p.Nombre,p.Descripcion,");
+                    query.AppendLine("dv.PrecioVenta,dv.Cantidad,dv.SubTotal");
+                    query.AppendLine("FROM DETALLE_VENTA dv");
+                    query.AppendLine("inner join PRODUCTO p on p.IdProducto = dv.IdProducto");
+                    query.AppendLine("WHERE dv.IdVenta = @idVenta");
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), connection);
+                    cmd.Parameters.AddWithValue("@idVenta", idVenta);
+                    cmd.CommandType = System.Data.CommandType.Text;
+
+
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            listaVenta.Add(new Detalle_Venta()
+                            {
+                                objProducto = new Producto() { Nombre = dr["Nombre"].ToString(), Descripcion = dr["Descripcion"].ToString()},
+                                PrecioVenta = Convert.ToDecimal(dr["PrecioVenta"].ToString()),
+                                Cantidad = Convert.ToInt32(dr["Cantidad"].ToString()),
+                                subTotal = Convert.ToDecimal(dr["SubTotal"].ToString())
+
+                               
+
+
+                            });
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    listaVenta = new List<Detalle_Venta>();
+                }
+            }
+
+            return listaVenta;
+        }
+
+        
     }
 }

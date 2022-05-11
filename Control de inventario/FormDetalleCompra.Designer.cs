@@ -31,6 +31,7 @@ namespace Control_de_inventario
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.progressBarListaProductos = new System.Windows.Forms.ProgressBar();
             this.btnExcel = new Control_de_inventario.DesignButtons.RJButton();
             this.label15 = new System.Windows.Forms.Label();
             this.txtMontoTotal = new System.Windows.Forms.TextBox();
@@ -90,6 +91,7 @@ namespace Control_de_inventario
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.progressBarListaProductos);
             this.groupBox4.Controls.Add(this.btnExcel);
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.txtMontoTotal);
@@ -99,6 +101,15 @@ namespace Control_de_inventario
             this.groupBox4.Size = new System.Drawing.Size(1407, 56);
             this.groupBox4.TabIndex = 31;
             this.groupBox4.TabStop = false;
+            // 
+            // progressBarListaProductos
+            // 
+            this.progressBarListaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarListaProductos.Location = new System.Drawing.Point(1029, 32);
+            this.progressBarListaProductos.Name = "progressBarListaProductos";
+            this.progressBarListaProductos.Size = new System.Drawing.Size(208, 14);
+            this.progressBarListaProductos.TabIndex = 70;
+            this.progressBarListaProductos.Visible = false;
             // 
             // btnExcel
             // 
@@ -112,7 +123,7 @@ namespace Control_de_inventario
             this.btnExcel.FlatAppearance.BorderSize = 0;
             this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.Image = global::Control_de_inventario.Properties.Resources.microsoft_excel321;
+            this.btnExcel.Image = global::Control_de_inventario.Properties.Resources.file_pdf_icon_32px;
             this.btnExcel.Location = new System.Drawing.Point(1312, 11);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(89, 39);
@@ -402,6 +413,7 @@ namespace Control_de_inventario
             this.txtBuscar.Size = new System.Drawing.Size(158, 20);
             this.txtBuscar.TabIndex = 59;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // label1
             // 
@@ -486,5 +498,6 @@ namespace Control_de_inventario
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
+        private System.Windows.Forms.ProgressBar progressBarListaProductos;
     }
 }

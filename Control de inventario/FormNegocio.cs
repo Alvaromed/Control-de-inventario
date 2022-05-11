@@ -102,5 +102,10 @@ namespace Control_de_inventario
 
             }
         }
+
+        private void Logo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

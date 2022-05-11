@@ -235,5 +235,10 @@ namespace Control_de_inventario
                 SendKeys.Send( "{F4}");
             }
         }
+
+        private void Login_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }

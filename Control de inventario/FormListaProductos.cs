@@ -24,6 +24,7 @@ namespace Control_de_inventario
 
         private void FormListaProductos_Load(object sender, EventArgs e)
         {
+            txtBuscar.Select();
             foreach (DataGridViewColumn column in dataProductos.Columns)
             {
 
@@ -135,6 +136,80 @@ namespace Control_de_inventario
             
         }
 
-       
+        private void txtBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                progressBarListaProductos.Visible = true;
+                /*
+                 * Estamos generando un objeto de la clase productos tomando la lista generada, 
+                 * donde (where) se hace una expresión lambda   
+                 * en donde p(productos) .Codigo sea igual a lo que está en la caja de texto 
+                 * y el estado del producto sea true, si es así que devuelva los valores asignados o
+                 * de lo contrario devuelva un null (FirsOrDefault);
+                 */
+                Producto producto = new N_Producto().List().Where(p => p.Codigo == txtBuscar.Text  /*&& p.Descripcion == txtDescripcion.Text*/ && p.Estado == true).FirstOrDefault();
+
+                // Si realmente encontró valores 
+                if (producto != null)
+                {
+                    //timerProgreso_Tick(sender,e);
+                    int valorMinimo, valorMaximo;
+                    valorMinimo = progressBarListaProductos.Minimum = 1;
+                    valorMaximo = progressBarListaProductos.Maximum = 2500;
+
+                    for (int i = valorMinimo; i <= valorMaximo; i++)
+                    {
+                        progressBarListaProductos.Value = i;
+                        progressBarListaProductos.PerformStep();
+                        this.btnBuscar.Cursor = Cursors.WaitCursor;
+
+                    }
+
+
+
+                    if (progressBarListaProductos.Value == 2500)
+                    {
+                        txtBuscar.BackColor = Color.Honeydew;
+                        //Nos ayudará a filtrar la columna de búsqueda
+                        string columna = ((OPcionCombo)comboBuscar.SelectedItem).Valor.ToString();
+
+                        if (dataProductos.Rows.Count > 0)
+                        {
+                            progressBarListaProductos.Value = 1;
+                            foreach (DataGridViewRow fila in dataProductos.Rows)
+                            {
+                                if (fila.Cells[columna].Value.ToString().Trim().ToUpper().Contains(txtBuscar.Text.Trim().ToUpper()))
+                                {
+
+                                    fila.Visible = true;
+                                    progressBarListaProductos.Visible = false;
+
+                                }
+                                else
+                                {
+                                    fila.Visible = false;
+
+                                }
+
+                            }
+
+
+                            this.btnBuscar.Cursor = Cursors.Hand;
+                        }
+                    }
+
+
+                   
+                   
+
+                }
+                else
+                {
+                    txtBuscar.BackColor = Color.MistyRose;
+                    
+                }
+            }
+        }
     }
 }

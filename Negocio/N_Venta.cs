@@ -36,5 +36,17 @@ namespace Negocio
             return objD_Venta.Registrar(venta, detalleVenta, out mensaje);
 
         }
+
+        public Venta ObtenerVenta(string numero)
+        {
+            Venta venta = objD_Venta.ObtenerVenta(numero);
+
+            if (venta.IdVenta != 0)
+            {
+                List<Detalle_Venta> listaVenta = objD_Venta.ObtenerDetalleVenta(venta.IdVenta);
+                venta.ListDetalleVenta = listaVenta;
+            }
+            return venta;
+        }
     }
 }

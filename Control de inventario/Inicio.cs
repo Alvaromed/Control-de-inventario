@@ -184,10 +184,7 @@ namespace Control_de_inventario
             formOpen((IconMenuItem)sender, new FormProveedores());
         }
 
-        private void menuReportes_Click(object sender, EventArgs e)
-        {
-            formOpen((IconMenuItem)sender, new FormReportes());
-        }
+       
 
         private void negocio_Click(object sender, EventArgs e)
         {
@@ -343,6 +340,29 @@ namespace Control_de_inventario
         private void Menu_Scroll(object sender, ScrollEventArgs e)
         {
 
+        }
+
+   
+
+        private void iconMenuItem1_Click(object sender, EventArgs e)
+        {
+            formOpen(menuReportes, new FormReporteCompras());
+        }
+
+        private void iconMenuItem2_Click(object sender, EventArgs e)
+        {
+            formOpen(menuReportes, new FormReporteVentas());
+        }
+
+        private void menuReportes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Total_Click(object sender, EventArgs e)
+        {
+            FormGraficosVentas graficosVentas = new FormGraficosVentas();
+            graficosVentas.Show();
         }
     }
 }

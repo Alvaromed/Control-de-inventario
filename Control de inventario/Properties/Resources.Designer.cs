@@ -131,6 +131,58 @@ namespace Control_de_inventario.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Web Page Design&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///        }
+        ///
+        ///            table.border th {
+        ///                text-align: center;
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///
+        ///            table.border td {
+        ///                text-align: center;
+        ///                padding: 5px;
+        ///                border: 1px solid black;
+        ///            }
+        ///    &lt;/style&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///    &lt;tab [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string DetalleVenta {
+            get {
+                return ResourceManager.GetString("DetalleVenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_pdf_icon_32px {
+            get {
+                object obj = ResourceManager.GetObject("file_pdf_icon_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_pdf_icon_32px1 {
+            get {
+                object obj = ResourceManager.GetObject("file_pdf_icon_32px1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap icons8_trash_25 {
@@ -240,6 +292,26 @@ namespace Control_de_inventario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Sale {
+            get {
+                object obj = ResourceManager.GetObject("Sale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sales50 {
+            get {
+                object obj = ResourceManager.GetObject("Sales50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save_color {
             get {
                 object obj = ResourceManager.GetObject("save color", resourceCulture);
@@ -305,6 +377,47 @@ namespace Control_de_inventario.Properties {
         internal static string ticket {
             get {
                 return ResourceManager.GetString("ticket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;html &gt;
+        ///&lt;head&gt;
+        ///
+        ///    &lt;title&gt;ticket&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///body {
+        ///  background: #EEE;
+        ///  font-family: sans-serif;
+        ///  font-size: 20px;
+        ///  margin: 3em;
+        ///  padding: 0;
+        ///}
+        ///table.border
+        ///        {
+        ///        
+        ///            border-collapse: collapse;
+        ///        }
+        ///#register {
+        ///  width: 20em;
+        ///  margin: auto;
+        ///}
+        ///#ticket {
+        ///  background: white;
+        ///  margin: 0 1em;
+        ///  padding: 1em;
+        ///  box-shadow: 0 0 5px rgba(0,0,0,.25);
+        ///}
+        ///#ticket h1 {
+        ///  text-align: center;
+        ///}
+        ///#ticket table {
+        ///  font-family: monospa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ticketVenta {
+            get {
+                return ResourceManager.GetString("ticketVenta", resourceCulture);
             }
         }
         

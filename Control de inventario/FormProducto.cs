@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -383,7 +384,7 @@ namespace Control_de_inventario
         {
             if (dataProductos.Rows.Count < 1)
             {
-                MessageBox.Show("No hay datos","Lista Vacía");
+                MessageBox.Show("No hay datos","Lista Vacía",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -420,10 +421,23 @@ namespace Control_de_inventario
                        }
                   
                 }
+
+                /*
+                     * Creación de directorio para guardar los archivos de detalle_compra
+                     * **/
+
+                string carpeta = @"C:\ControlInventario\Productos";
+                if (!Directory.Exists(carpeta))
+                {
+                    Directory.CreateDirectory(carpeta);
+                }
+
+
                 SaveFileDialog saveFile = new SaveFileDialog();
                 string formatoHora = DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss");
-                saveFile.FileName = string.Format("REPORTE PRODUCTOS_"+formatoHora+".xlsx");
+                saveFile.FileName = string.Format("REPORTE_PRODUCTOS_"+formatoHora+".xlsx");
                 saveFile.Filter = "Excel Files | *.xlsx";
+                saveFile.InitialDirectory = @"C:\ControlInventario\Productos";
 
                 //Condición para cuando el diálogo de creación del archivo es OK 
                 if (saveFile.ShowDialog() == DialogResult.OK)

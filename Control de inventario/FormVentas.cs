@@ -1,12 +1,16 @@
 ﻿using Control_de_inventario.ConboBox;
 using Control_de_inventario.SegundosFormCompras;
 using Entidad;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
 using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +41,8 @@ namespace Control_de_inventario
 
         private void FormVentas_Load(object sender, EventArgs e)
         {
+            lblUsuario.Text = usuario.UsuarioLogin;
+            txtCodigo.Select();
             comboTipoDocumento.Items.Add(new OPcionCombo() { Valor = "Ticket", Texto = "Ticket" });
             comboTipoDocumento.Items.Add(new OPcionCombo() { Valor = "Factura", Texto = "Factura" });
 
@@ -50,7 +56,7 @@ namespace Control_de_inventario
             txtCambio.Text = "0.00";
             txtTotalPagar.Text = "0.00";
 
-            
+
         }
 
         private void timerHoraVenta_Tick(object sender, EventArgs e)
@@ -103,12 +109,12 @@ namespace Control_de_inventario
 
         private void txtPagaCon_CursorChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtPagaCon_TabIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtCodigo_KeyDown(object sender, KeyEventArgs e)
@@ -135,7 +141,7 @@ namespace Control_de_inventario
                     txtIdProducto.Text = producto.IdProducto.ToString();
                     txtProducto.Text = producto.Nombre;
                     txtDescripcion.Text = producto.Descripcion;
-                    txtPrecioVenta.Text = producto.PrecioVenta.ToString(); 
+                    txtPrecioVenta.Text = producto.PrecioVenta.ToString();
                     txtStock.Text = producto.Stock.ToString();
 
                     numericCantidad.Select();
@@ -155,7 +161,7 @@ namespace Control_de_inventario
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-           
+
             decimal precioVenta = 0;
             bool productoExistente = false;
 
@@ -166,7 +172,7 @@ namespace Control_de_inventario
                 return;
             }
 
-          
+
             /*
              * Esto es para que intetente convertir el precio de compra en decimal, si es correcto devolverá un true pero,
              * tenemos una negación al principio así que devuelve un false
@@ -181,10 +187,10 @@ namespace Control_de_inventario
 
             if (Convert.ToInt32(txtStock.Text) > Convert.ToInt32(numericCantidad.Value.ToString()))
             {
-            
-            /**
-            * Recorrido de la tabla dataProductosVenta para saber si el id de producto ya se encuentra registrado y así no hacer registros dobles 
-            */
+
+                /**
+                * Recorrido de la tabla dataProductosVenta para saber si el id de producto ya se encuentra registrado y así no hacer registros dobles 
+                */
                 foreach (DataGridViewRow fila in dataProductosVenta.Rows)
                 {
                     try
@@ -229,10 +235,10 @@ namespace Control_de_inventario
                             CalcularTotal();
                             LimpiarProducto();
                             txtCodigo.Select();
-                            
+
                         }
 
-                     
+
                     }
                     else
                     {
@@ -244,9 +250,9 @@ namespace Control_de_inventario
 
                     MessageBox.Show(ex.Message);
                 }
-                
-                
-                
+
+
+
 
             }
             else
@@ -257,7 +263,7 @@ namespace Control_de_inventario
 
         }
 
-       
+
 
         private void dataProductosVenta_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -296,7 +302,7 @@ namespace Control_de_inventario
                     {
                         bool respuesta = new N_Venta().SumarStock(
 
-                           Convert.ToInt32( dataProductosVenta.Rows[indice].Cells["IdProducto"].Value.ToString()),
+                           Convert.ToInt32(dataProductosVenta.Rows[indice].Cells["IdProducto"].Value.ToString()),
                            Convert.ToInt32(dataProductosVenta.Rows[indice].Cells["Cantidad"].Value.ToString())
 
                             );
@@ -305,10 +311,10 @@ namespace Control_de_inventario
                         CalcularTotal();
                         CalcularCambio();
                     }
-                    if (indice ==0)
+                    if (indice == 0)
                     {
                         txtPagaCon.Text = "0.00";
-                        
+
                         txtCambio.Text = "0.00";
                     }
 
@@ -316,7 +322,7 @@ namespace Control_de_inventario
             }
         }
 
-        
+
 
         private void txtPagaCon_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -355,7 +361,7 @@ namespace Control_de_inventario
                 CalcularCambio();
             }
 
-            
+
         }
 
 
@@ -394,7 +400,7 @@ namespace Control_de_inventario
 
             if (txtPagaCon.Text.Trim() == "0.00")
             {
-                txtPagaCon.Text = "0";
+                txtPagaCon.Text = "0.00";
                 CalcularCambio();
                 return;
             }
@@ -403,17 +409,20 @@ namespace Control_de_inventario
             {
                 if (pago > totalPago)
                 {
+                    decimal pagoCon;
                     decimal cambio = pago - totalPago;
 
                     txtCambio.Text = cambio.ToString("0.00");
+                    txtPagaCon.Text = pago.ToString("0.00");
                 }
-                else if(pago < totalPago)
-                {
-                    txtCambio.Text = "0.00";
-                    MessageBox.Show("Debe pagar con la misma o mayor cantidad del total", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //else if (pago < totalPago)
+                //{
+                //    txtCambio.Text = "0.00";
+                //    MessageBox.Show("Debe pagar con la misma o mayor cantidad del total", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                //    return;
 
-                }
-                else if(pago == totalPago)
+                //}
+                else if (pago == totalPago)
                     txtCambio.Text = "0.00";
 
             }
@@ -423,13 +432,198 @@ namespace Control_de_inventario
 
         private void numericCantidad_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Enter   || e.KeyData == Keys.Space)
+            if (e.KeyData == Keys.Enter || e.KeyData == Keys.Space)
             {
-                btnAgregarProducto_Click( sender, e);
+                btnAgregarProducto_Click(sender, e);
 
-        }   }
+            }
+        }
 
         private void btnRegistrarProductos_Click(object sender, EventArgs e)
+        {
+            if (dataProductosVenta.Rows.Count < 1)
+            {
+                MessageBox.Show("Para registrar la venta \ndebe tener productos en la lista", "Lista de productos vacía", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            //Creación de un dataTable con el nombre de detalleVenta con las columnas que necesitamos
+
+            DataTable detalleVenta = new DataTable();
+
+            detalleVenta.Columns.Add("IdProducto", typeof(int));
+            detalleVenta.Columns.Add("Precio", typeof(decimal));
+            detalleVenta.Columns.Add("Cantidad", typeof(int));
+            detalleVenta.Columns.Add("SubTotal", typeof(decimal));
+
+            foreach (DataGridViewRow fila in dataProductosVenta.Rows)
+            {
+                detalleVenta.Rows.Add(new object[]
+                {
+                    fila.Cells["IdProducto"].Value.ToString(),
+                    fila.Cells["Precio"].Value.ToString(),
+                    fila.Cells["Cantidad"].Value.ToString(),
+                    fila.Cells["SubTotal"].Value.ToString()
+                });
+            }
+
+            int id = new N_Venta().Obtener();
+            string numeroDocumento = string.Format("{0:000000}", id);
+            CalcularCambio();
+
+            Venta objVenta = new Venta()
+
+            {
+                objUsuario = new Usuario() { IdUsuario = usuario.IdUsuario },
+                TipoDocumento = ((OPcionCombo)comboTipoDocumento.SelectedItem).Texto,
+                NumeroDocumento = numeroDocumento,
+                MontoPago = Convert.ToDecimal(txtPagaCon.Text),
+                MontoCambio = Convert.ToDecimal(txtCambio.Text),
+                MontoTotal = Convert.ToDecimal(txtTotalPagar.Text)
+
+
+            };
+
+            string mensaje = string.Empty;
+            bool respuesta = new N_Venta().Registrar(objVenta, detalleVenta, out mensaje);
+
+            if (Convert.ToDecimal(txtPagaCon.Text) < Convert.ToDecimal(txtTotalPagar.Text))
+
+            {
+                MessageBox.Show("Debe de paga con mayor o igual cantidad al precio de venta", "Falta pago", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else
+            if (respuesta)
+            {
+                //var resultado = MessageBox.Show("Número de venta: \n" + numeroDocumento + "\n¿Desea copiar al portapapeles?", "Venta Registrada", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                //if (resultado == DialogResult.Yes)
+                //{
+                //    Clipboard.SetText(numeroDocumento);
+                //}
+
+
+                ////Agregado 18/03/22
+                string htmlTexto = Properties.Resources.ticketVenta.ToString();
+                E_Negocio negocio = new N_Negocio().ObtenerDatos();
+
+                htmlTexto = htmlTexto.Replace("@nombrenegocio", negocio.Nombre.ToUpper());
+                htmlTexto = htmlTexto.Replace("@docnegocio", negocio.RFC);
+                htmlTexto = htmlTexto.Replace("@direcnegocio", negocio.Direccion);
+
+
+                htmlTexto = htmlTexto.Replace("@tipodocumento", comboTipoDocumento.Text.ToUpper());
+                htmlTexto = htmlTexto.Replace("@numerodocumento", numeroDocumento);
+
+
+
+                htmlTexto = htmlTexto.Replace("@fecharegistro", txtFecha.Text);
+                htmlTexto = htmlTexto.Replace("@usuarioregistro", lblUsuario.Text);
+
+
+                string filas = string.Empty;
+
+                foreach (DataGridViewRow fila in dataProductosVenta.Rows)
+                {
+                    filas += "<tr>";
+                    filas += "<td>" + fila.Cells["Nombre"].Value.ToString() + "</td>";
+                    filas += "<td>" + fila.Cells["Descripcion"].Value.ToString() + "</td>";
+                    filas += "<td>" + "$" + fila.Cells["Precio"].Value.ToString() + "</td>";
+                    filas += "<td>" + fila.Cells["Cantidad"].Value.ToString() + "</td>";
+                    filas += "<td>" + "$" + fila.Cells["SubTotal"].Value.ToString() + "</td>";
+                    filas += "</tr>";
+
+                }
+
+                htmlTexto = htmlTexto.Replace("@filas", filas);
+                htmlTexto = htmlTexto.Replace("@montototal", txtTotalPagar.Text);
+                htmlTexto = htmlTexto.Replace("@pagacon", txtPagaCon.Text);
+                htmlTexto = htmlTexto.Replace("@cambio", txtCambio.Text);
+
+
+
+
+                /*
+                 * Creación de directorio para guardar los archivos de detalle_compra
+                 * **/
+
+                string carpeta = @"C:\ControlInventario\Venta";
+                if (!Directory.Exists(carpeta))
+                {
+                    Directory.CreateDirectory(carpeta);
+                }
+
+
+                SaveFileDialog saveFile = new SaveFileDialog();
+                //string formatoHora = DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss");
+                saveFile.FileName = string.Format("VENTA_" + numeroDocumento + ".pdf");
+                saveFile.Filter = "Pdf Files| *.pdf";
+                saveFile.InitialDirectory = @"C:\ControlInventario\Venta";
+
+
+
+
+
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    using (FileStream stream = new FileStream(saveFile.FileName, FileMode.Create))
+
+                    {
+                        Document pdfDoc = new Document(PageSize.B4, 10, 10, 10, 10);
+
+
+                        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                        pdfDoc.Open();
+
+
+                        //Ya que el pdf está creado, se abre para poder insertar el logo,
+                        // es algo opcional
+
+                        //bool obtenido = true;
+                        //byte[] byteImage = new N_Negocio().ObtenerLogo(out obtenido);
+
+                        //if (obtenido)
+                        //{
+                        //    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteImage);
+
+                        //    img.ScaleToFit(60, 60);
+
+                        //    img.Alignment = iTextSharp.text.Image.UNDERLYING;
+                        //    img.SetAbsolutePosition(pdfDoc.Left, pdfDoc.GetTop(51));
+
+                        //    pdfDoc.Add(img);
+                        //}
+
+                        using (StringReader sr = new StringReader(htmlTexto))
+                        {
+                            XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                        }
+                        pdfDoc.Close();
+                        stream.Close();
+
+                        MessageBox.Show("Documento generado", "Creación de PDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+                        dataProductosVenta.Rows.Clear();
+                        CalcularTotal();
+
+                        FormCambioVenta formCambioVenta = new FormCambioVenta();
+                        formCambioVenta.txtCambio2.Text = txtCambio.Text;
+                        formCambioVenta.Show();
+                        txtPagaCon.Text = "";
+                        txtCambio.Text = "";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(mensaje, "Error venta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtTotalPagar_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -87,7 +87,7 @@ table.border th {
                             </tr>
                             <tr>
                                 <td align="center">
-                                    <label style="font-size:8px;font-weight:bold">@numerodocumento</label>
+                                    <label style="font-size:7px;font-weight:bold">@numerodocumento</label>
                                 </td>
                             </tr>
                         </table>
@@ -96,14 +96,7 @@ table.border th {
             </table>
             <hr/>
             <table border="0" style="width:100%">
-                <tr>
-                    <td style="width:20%"><label style="font-size:12px;font-weight:bold">Documento Proveedor:</label></td>
-                    <td style="width:20%"><label style="font-size:12px;">@docproveedor</label></td>
-                </tr>
-                <tr>
-                    <td style="width:20%"><label style="font-size:12px;font-weight:bold">Nombre Proveedor:</label></td>
-                    <td style="width:20%"><label style="font-size:12px;">@nombreproveedor</label></td>
-                </tr>
+               
                 <tr>
                     <td style="width:20%"><label style="font-size:12px;font-weight:bold">Fecha Registro:</label></td>
                     <td style="width:20%"><label style="font-size:12px;">@fecharegistro</label></td>
@@ -127,7 +120,7 @@ table.border th {
                         <tr style="background-color:#CACACA">
                             <th>Producto</th>
                             <th>Descripción</th>
-                            <th>Precio Compra</th>
+                            <th>Precio Unitario</th>
                             <th>Cantidad</th>
                             <th>Sub Total</th>
                         </tr>
@@ -140,14 +133,27 @@ table.border th {
             </tbody>
             <hr/>
             <tfoot>
+
+              <tr>
+                <th>Paga con</th>
+                <th id="total">$ @pagacon</th>
+               
+              </tr>
+
               <tr>
                 <th>Total</th>
                 <th id="total">$ @montototal</th>
+        
+              </tr>
+          
+              <tr>
+                <th>Cambio</th>  
+                <th id="total">$ @cambio</th>
               </tr>
             </tfoot>
           </table>
         </div>
-        
+
       </div>
 </body>
 </html>

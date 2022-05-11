@@ -557,12 +557,14 @@ namespace Control_de_inventario
                     htmlTexto = htmlTexto.Replace("@filas", filas);
                     htmlTexto = htmlTexto.Replace("@montototal", txtTotalPagar.Text);
 
+                    
+
 
                     /*
                      * Creación de directorio para guardar los archivos de detalle_compra
                      * **/
 
-                    string carpeta = @"C:\ControlInventario\DetalleCompras";
+                    string carpeta = @"C:\ControlInventario\Compras";
                     if (!Directory.Exists(carpeta))
                     {
                         Directory.CreateDirectory(carpeta);
@@ -573,7 +575,7 @@ namespace Control_de_inventario
                     //string formatoHora = DateTime.Now.ToString("dd-MM-yyyy HH-mm-ss");
                     saveFile.FileName = string.Format("COMPRA_" + numeroDocumento + ".pdf");
                     saveFile.Filter = "Pdf Files| *.pdf";
-                    saveFile.InitialDirectory = @"C:\ControlInventario\DetalleCompras";
+                    saveFile.InitialDirectory = @"C:\ControlInventario\Compras";
 
 
 
@@ -745,6 +747,11 @@ namespace Control_de_inventario
             //        printProcess.Kill();
             //    }
             //}
+        }
+
+        private void txtFecha_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }
